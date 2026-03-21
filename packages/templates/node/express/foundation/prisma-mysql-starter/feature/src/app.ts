@@ -31,7 +31,9 @@ app.use(cookieParser());
 app.use(morgan(env.NODE_ENV === "development" ? "dev" : "combined"));
 
 //? Swagger Setup
-setupSwagger(app);
+if (process.env.NODE_ENV !== 'production') {
+  setupSwagger(app);
+}
 
 //? Routes
 app.get("/", (req: Request, res: Response) => {

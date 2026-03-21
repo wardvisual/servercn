@@ -1,5 +1,6 @@
 import { Server } from "http";
 import { logger } from "./logger";
+import prisma from "../configs/prisma";
 
 export const configureGracefulShutdown = (server: Server) => {
   const signals = ["SIGTERM", "SIGINT"];
@@ -8,12 +9,13 @@ export const configureGracefulShutdown = (server: Server) => {
     process.on(signal, () => {
       logger.info(`\n${signal} signal received. Shutting down gracefully...`);
 
-      server.close(err => {
+      server.close(async err => {
         if (err) {
           logger.error(err, "Error during server close");
           process.exit(1);
         }
 
+        await prisma.$disconnect();
         logger.info("HTTP server closed.");
         process.exit(0);
       });

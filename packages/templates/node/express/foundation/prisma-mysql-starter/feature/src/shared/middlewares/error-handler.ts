@@ -26,6 +26,7 @@ export const errorHandler = (
   const response = {
     success: false,
     message,
+    ...(err instanceof ApiError && err.errors && { errors: err.errors }),
     ...(env.NODE_ENV === "development" && { stack: err.stack })
   };
 

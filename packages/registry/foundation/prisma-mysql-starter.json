@@ -23,12 +23,12 @@
               "zod",
               "@prisma/client@6",
               "swagger-autogen",
-              "swagger-ui-express"
+              "swagger-ui-express",
+              "morgan"
             ],
             "dev": [
               "prisma@6",
               "@types/express",
-              "morgan",
               "@types/cors",
               "@types/morgan",
               "@types/cookie-parser",
