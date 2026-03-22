@@ -14,7 +14,7 @@ export default function JSGuideCTA() {
         <h2 className="text-3xl leading-tight font-medium tracking-tight text-balance md:text-5xl">
           Using JavaScript Instead of TypeScript?
         </h2>
-        <p className="text-muted-foreground mt-4 text-base sm:text-lg font-medium">
+        <p className="text-muted-foreground mt-4 text-base font-medium sm:text-lg">
           <span className="capitalize">{APP_NAME}</span> components are written
           in TypeScript, but JavaScript developers can still use them.
           <br />
@@ -23,7 +23,7 @@ export default function JSGuideCTA() {
         </p>
 
         <JSGuideModal>
-          <Button size="lg" className="flex gap-2 w-60">
+          <Button size="lg" className="flex w-60 gap-2">
             View JavaScript Guide
             <ExternalLinkIcon className="size-4" />
           </Button>
@@ -31,7 +31,7 @@ export default function JSGuideCTA() {
       </div>
 
       <div className="">
-        <DemoVideo />
+        <DemoVideo src="https://res.cloudinary.com/servercn/video/upload/v1774173613/servercn-js-guide.mp4" />
       </div>
     </Section>
   );

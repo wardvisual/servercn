@@ -1,5 +1,5 @@
 import Video from "next-video";
 
-export default function DemoVideo() {
-  return <Video src={"/demo.mp4"} autoPlay loop />;
+export default function DemoVideo({ src }: { src: string }) {
+  return <Video src={src} autoPlay loop />;
 }

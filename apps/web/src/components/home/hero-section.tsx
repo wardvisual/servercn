@@ -96,7 +96,7 @@ export default function HeroSection() {
           </div>
 
           <div className="overflow-hidden rounded-md border">
-            <DemoVideo />
+            <DemoVideo src="/demo.mp4" />
           </div>
         </div>
 

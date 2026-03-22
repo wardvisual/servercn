@@ -10,7 +10,7 @@ export default function ComponentCard({
 }) {
   return (
     <Link
-      href={(component.status !== "stable" ? component.url : "") as Route}
+      href={(component.status === "stable" ? component.url : "") as Route}
       className={cn("group border-edge hover:bg-card-hover screen-line-before relative p-4 duration-300 last:border-r", component.status !== "stable" && "pointer-events-none")}>
       {component.status !== "stable" && (
         <>

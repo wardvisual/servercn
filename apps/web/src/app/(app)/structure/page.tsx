@@ -1,5 +1,6 @@
 import { ItemType } from "@/@types/registry";
 import ArchitectureTabs from "@/components/docs/architecture-tabs";
+import CodeTheme from "@/components/docs/code-theme";
 import ComponentFileViewer from "@/components/file-viewer";
 import { Container } from "@/components/ui/container";
 import { FrameworkType } from "@/lib/files";
@@ -9,13 +10,16 @@ export default async function page(props: PageProps<"/components">) {
   return (
     <Container className="border-edge border-x px-0 pt-18">
       <div className="mt-2 w-full px-4">
-        <h2 className="mb-2 text-2xl font-medium tracking-tight">
+        <h2 className="text-2xl font-medium tracking-tight">
           File &amp; Folder Structure
         </h2>
-        <ArchitectureTabs
-          current={(searchParams?.arch as string) || "mvc"}
-          framework={(searchParams?.framework as FrameworkType) || "express"}
-        />
+        <div className="flex flex-wrap items-center justify-between gap-4">
+          <ArchitectureTabs
+            current={(searchParams?.arch as string) || "mvc"}
+            framework={(searchParams?.framework as FrameworkType) || "express"}
+          />
+          <CodeTheme />
+        </div>
         <ComponentFileViewer
           from="structure"
           slug={(searchParams?.slug as string) || ""}
