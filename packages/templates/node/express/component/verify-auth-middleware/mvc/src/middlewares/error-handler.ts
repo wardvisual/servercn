@@ -10,22 +10,29 @@ export const errorHandler = (
   res: Response,
   next: NextFunction
 ) => {
+  if (res.headersSent) {
+    return next(err);
+  }
   let statusCode = 500;
   let message = "Internal server error";
+  let errors: unknown;
 
   if (err instanceof ApiError) {
     statusCode = err.statusCode;
     message = err.message;
+    errors = err.errors;
   }
 
   logger.error(
-    `Error: ${message} | Status: ${statusCode} | Path: ${req.method} ${req.originalUrl}`,
-    err
+    err,
+    `Error: ${message} | Status: ${statusCode} | Path: ${req.method} ${req.originalUrl}`
   );
 
   const response = {
     success: false,
     message,
+    statusCode,
+    ...(errors !== undefined && { errors }),
     ...(env.NODE_ENV === "development" && { stack: err.stack })
   };
 

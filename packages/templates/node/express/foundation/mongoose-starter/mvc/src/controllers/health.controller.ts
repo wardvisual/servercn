@@ -1,23 +1,24 @@
 import { Request, Response } from "express";
 import { ApiResponse } from "../utils/api-response";
+import { AsyncHandler } from "../utils/async-handler";
 
 /**
  * Basic health check endpoint
  * GET /api/health
  */
-export const healthCheck = async (_req: Request, res: Response) => {
+export const healthCheck = AsyncHandler(async (_req: Request, res: Response) => {
   return ApiResponse.Success(res, "Service is healthy", {
     status: "healthy",
     timestamp: new Date().toISOString(),
     uptime: process.uptime()
   });
-};
+});
 
 /**
  * Detailed health check with system information
  * GET /api/health/detailed
  */
-export const detailedHealthCheck = async (_req: Request, res: Response) => {
+export const detailedHealthCheck = AsyncHandler(async (_req: Request, res: Response) => {
   const healthData = {
     status: "healthy",
     timestamp: new Date().toISOString(),
@@ -37,4 +38,4 @@ export const detailedHealthCheck = async (_req: Request, res: Response) => {
   };
 
   return ApiResponse.Success(res, "Service is healthy", healthData);
-};
+});

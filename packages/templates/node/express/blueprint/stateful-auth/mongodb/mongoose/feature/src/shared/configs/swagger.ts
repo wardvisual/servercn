@@ -1,5 +1,6 @@
 import swaggerUi from "swagger-ui-express";
 import { Express } from "express";
+import env from "../configs/env";
 import fs from "node:fs";
 
 const swaggerDocument = JSON.parse(
@@ -7,5 +8,7 @@ const swaggerDocument = JSON.parse(
 );
 
 export const setupSwagger = (app: Express) => {
+  if (env.NODE_ENV !== "development") return;
+
   app.use("/api/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 };
