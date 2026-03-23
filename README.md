@@ -1,6 +1,6 @@
 # Servercn
 
-> **Backend component registry for Node.js & Typescript**
+> **Backend component registry for Node.js & TypeScript**
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?logo=typescript&logoColor=white)
@@ -8,9 +8,7 @@
 
 **Servercn** is a backend component registry for Node.js & TypeScript. It provides a robust collection of pre-configured components, boilerplates, and utilities for **Node.js** and **TypeScript**, enabling developers to scaffold production-ready code in seconds.
 
-> Shadcn ecosystem for nodejs backend
-
----
+> Shadcn ecosystem for Node.js backend
 
 ![Servercn Components](./apps/web/public/og-image.png)
 
@@ -106,15 +104,15 @@ npx servercn-cli add health-check
 
 ### 3. CLI Commands
 
-[Visit for more](https://Servercn.vercel.app/docs/cli)
+[Visit for more](https://servercn.vercel.app/docs/cli)
 
-- List all available registry item.
+- List all available registry items.
 
   ```bash
   npx servercn-cli ls --all
   ```
 
-- List all available registry item in JSON structure.
+- List all available registry items in JSON structure.
 
   ```bash
   npx servercn-cli ls --all --json
@@ -138,13 +136,13 @@ npx servercn-cli add health-check
   npx servercn-cli ls cp
   ```
 
-- List available all foundation.
+- List all available foundations.
 
   ```bash
   npx servercn-cli ls fd
   ```
 
-- List available schema.
+- List available schemas.
 
   ```bash
   npx servercn-cli ls sc
@@ -166,7 +164,7 @@ npx servercn-cli add health-check
 
 We welcome contributions! Please feel free to submit a Pull Request.
 
-[Contributing guides](https://Servercn.vercel.app/contributing)
+[Contributing guides](https://servercn.vercel.app/contributing)
 
 ## 📄 License
 
@@ -176,8 +174,8 @@ This project is licensed under the [MIT License](LICENSE).
 
 [![RepoStars](https://repostars.dev/api/embed?repo=AkkalDhami%2Fservercn&theme=dark)](https://repostars.dev/?repos=AkkalDhami%2Fservercn&theme=dark)
 
----
+***
 
 <p align="center">
-  Built with 🪓 by <a target="_blank" href="https://github.com/akkaldhami">Akkal Dhami</a> and the <a target="_blank" href="https://Servercn.vercel.app/contributors">servercn contributors</a>
+  Built with 🪓 by <a target="_blank" href="https://github.com/akkaldhami">Akkal Dhami</a> and the <a target="_blank" href="https://servercn.vercel.app/contributors">servercn contributors</a>
 </p>
