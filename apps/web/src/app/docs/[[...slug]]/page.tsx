@@ -11,7 +11,12 @@ import { OpenInAi } from "@/components/docs/open-in-ai";
 import ArchitectureTabs from "@/components/docs/architecture-tabs";
 import PackageManagerTabs from "@/components/docs/package-manager-tabs";
 import { Metadata, Route } from "next";
-import { findNeighbour, RESTRICTED_FOLDER_STRUCTURE_PAGES } from "@/lib/source";
+import {
+  findNeighbour,
+  FRAMEWORK_SECTIONS,
+  injectFramework,
+  RESTRICTED_FOLDER_STRUCTURE_PAGES
+} from "@/lib/source";
 import Link from "next/link";
 import { ArrowLeftIcon, ArrowRightIcon } from "lucide-react";
 import registry from "@/data/registry.json";
@@ -27,34 +32,6 @@ export const dynamic = "force-dynamic";
 export const dynamicParams = false;
 
 const DOCS_PATH = path.join(process.cwd(), "src/content/docs");
-
-const FRAMEWORK_SECTIONS = [
-  "blueprints",
-  "components",
-  "foundations",
-  "schemas"
-];
-
-const injectFramework = ({
-  docsUrl,
-  currentFramework = ""
-}: {
-  docsUrl: string;
-  currentFramework: string;
-}): string => {
-  if (!currentFramework) return docsUrl;
-
-  const segments = docsUrl.split("/").filter(Boolean);
-  if (segments[0] !== "docs") return docsUrl;
-
-  // Check if the target section supports frameworks
-  const section = segments[1];
-  if (FRAMEWORK_SECTIONS.includes(section)) {
-    segments.splice(1, 0, currentFramework);
-    return `/${segments.join("/")}`;
-  }
-  return docsUrl;
-};
 
 export async function generateStaticParams() {
   const registryParams = registry.items.flatMap(({ meta, docs }) => {
@@ -227,10 +204,10 @@ export default async function DocsPage({
                   className={buttonVariants({ variant: "secondary" })}
                   href={
                     (prev
-                      ? injectFramework({
-                          docsUrl: prev.docs as string,
-                          currentFramework: currentFramework || ""
-                        })
+                      ? injectFramework(
+                          prev.docs as string,
+                          currentFramework || ""
+                        )
                       : "") as Route
                   }>
                   <ArrowLeftIcon className="size-4" />
@@ -238,10 +215,10 @@ export default async function DocsPage({
                 <Link
                   href={
                     (next
-                      ? injectFramework({
-                          docsUrl: next.docs as string,
-                          currentFramework: currentFramework || ""
-                        })
+                      ? injectFramework(
+                          next.docs as string,
+                          currentFramework || ""
+                        )
                       : "") as Route
                   }
                   className={buttonVariants({ variant: "secondary" })}>
@@ -272,7 +249,8 @@ export default async function DocsPage({
           </article>
           <div className="w-full overflow-x-auto">
             <div className="border-edge mt-4">
-              {lastSlug && FRAMEWORK_SECTIONS.includes(actualSlug[0]) &&
+              {lastSlug &&
+                FRAMEWORK_SECTIONS.includes(actualSlug[0]) &&
                 !RESTRICTED_FOLDER_STRUCTURE_PAGES.includes(lastSlug) && (
                   <>
                     <h2 className="mt-6 mb-2 text-2xl font-semibold tracking-tight">
@@ -338,10 +316,10 @@ const NextSteps = ({
         <div className="flex items-center justify-start">
           <Link
             href={
-              injectFramework({
-                docsUrl: prev.docs as string,
-                currentFramework: currentFramework || ""
-              }) as Route
+              injectFramework(
+                prev.docs as string,
+                currentFramework || ""
+              ) as Route
             }
             className="bg-muted text-muted-foreground hover:bg-secondary hover:text-foreground flex items-center gap-2 rounded-md px-3 py-2 text-base font-medium duration-200 sm:py-1.5">
             <ArrowLeftIcon className="size-4" />
@@ -353,10 +331,10 @@ const NextSteps = ({
         <div className="flex items-center justify-end">
           <Link
             href={
-              injectFramework({
-                docsUrl: next.docs as string,
-                currentFramework: currentFramework || ""
-              }) as Route
+              injectFramework(
+                next.docs as string,
+                currentFramework || ""
+              ) as Route
             }
             className="bg-muted text-muted-foreground hover:bg-secondary hover:text-foreground flex items-center gap-2 rounded-md px-3 py-2 text-base font-medium duration-200 sm:py-1.5">
             <span className="hidden sm:inline"> {next.title}</span>{" "}

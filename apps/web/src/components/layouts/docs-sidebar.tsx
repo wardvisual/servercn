@@ -7,17 +7,10 @@ import { motion } from "motion/react";
 import { IRegistryItems, ISchema } from "@/@types/registry";
 
 import { cn } from "@/lib/utils";
-import { getRegistryTypeItems } from "@/lib/source";
+import { getRegistryTypeItems, injectFramework } from "@/lib/source";
 import CodeTheme from "@/components/docs/code-theme";
 import { SelectFramework } from "@/components/docs/select-framework";
 import { useFramework } from "@/store/use-framework";
-
-const FRAMEWORK_SECTIONS = [
-  "blueprints",
-  "components",
-  "foundations",
-  "schemas"
-];
 
 export const ITEM_GROUP_NAMING = {
   guide: "Getting Started",
@@ -101,30 +94,6 @@ export default function DocsSidebar({
     }
   ];
 
-  // Helper function to inject framework into URL if applicable
-  const injectFramework = (url: string, itemType?: string): string => {
-    if (!framework) return url;
-
-    const segments = url.split("/").filter(Boolean);
-
-    // Check if URL starts with /docs
-    if (segments[0] !== "docs") return url;
-
-    // Check if the section supports frameworks
-    const section = segments[1];
-    if (FRAMEWORK_SECTIONS.includes(section)) {
-      // Remove existing framework if present
-      if (segments[1] === "express" || segments[1] === "nestjs") {
-        segments.splice(1, 1);
-      }
-      // Insert the stored framework
-      segments.splice(1, 0, framework);
-      return `/${segments.join("/")}`;
-    }
-
-    return url;
-  };
-
   return (
     <nav className="no-scrollbar font-inter sticky top-20 left-0 z-10 h-full max-h-[calc(100vh-2rem)] space-y-6 overflow-y-auto px-3 py-0 pb-14 text-sm lg:mb-10">
       <CodeTheme />
@@ -142,10 +111,7 @@ export default function DocsSidebar({
               {(section.items as IRegistryItems[])
                 // .filter(item => item.status === "stable")
                 .map((item, i: number) => {
-                  const itemUrl = injectFramework(
-                    item.url as string,
-                    item.type
-                  );
+                  const itemUrl = injectFramework(item.url as string, framework);
                   // Check if current pathname matches the item (with or without framework)
                   const isActive =
                     pathname === itemUrl ||

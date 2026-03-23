@@ -46,7 +46,7 @@ export type RegistryFile = {
 };
 
 export type ArchitectureType = "mvc" | "feature" | "modular";
-export type FrameworkType = "express" | "nestjs";
+export type FrameworkType = "express" | "nextjs" | "nestjs";
 
 export type FileNode =
   | {
