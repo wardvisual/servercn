@@ -31,6 +31,7 @@ After running the command, you will be prompted to choose a project foundation:
   Express + Mongoose
   Express + MySQL (Drizzle)
   Express + PostgreSQL (Drizzle)
+  Express + MongoDB (Prisma)
   Existing Project
 ```
 
@@ -93,6 +94,8 @@ The Mongoose Starter is a database foundation provided by servercn for projects 
 
 - **MVC**: Traditional Model-View-Controller structure
 - **Feature-based**: Feature-module architecture
+- **Modular**: Nestjs based architecture
+- **File-Api**: Nextjs based architecture
 
 **Language**
 
@@ -116,25 +119,16 @@ This file stores your project configuration and is used by Servercn to generate 
 ```json
 {
   "$schema": "https://servercn.vercel.app/schema/servercn.config.json",
-  "version": "1.1.4",
-  "project": {
-    "root": ".",
-    "type": "backend",
-    "packageManager": "npm"
-  },
-  "stack": {
-    "runtime": "node",
-    "language": "typescript",
-    "framework": "express",
-    "architecture": "mvc"
-  },
+  "version": "1.1.11",
+  "rootDir": ".",
+  "packageManager": "npm",
+  "runtime": "node",
+  "language": "typescript",
+  "framework": "express",
+  "architecture": "mvc",
   "database": {
     "engine": "mongodb",
     "adapter": "mongoose"
-  },
-  "meta": {
-    "createdAt": "2026-02-26T11:15:30.945Z",
-    "createdBy": "servercn@1.1.4"
   }
 }
 ```
@@ -171,14 +165,11 @@ You can manually edit <Code children="servercn.config.json" /> to change your pr
 
 ```json
 {
-  "stack": {
-    "architecture": "feature" // Change from "mvc" to "feature"
-  }
+  "architecture": "feature" // Change from "mvc" to "feature"
 }
 ```
 
 After updating, new components will use the updated configuration.
-
 
 ## Next Steps
 
