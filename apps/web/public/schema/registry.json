@@ -76,7 +76,7 @@
           "description": "List of supported frameworks.",
           "items": {
             "type": "string",
-            "enum": ["express", "nestjs"]
+            "enum": ["express", "nestjs", "nextjs"]
           }
         },
         "status": {

@@ -1,10 +1,20 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "Servercn Config",
-  "description": "Advanced configuration schema for Servercn projects",
+  "description": "Flat configuration schema for Servercn projects",
   "type": "object",
-  "required": ["version", "project", "stack", "meta"],
   "additionalProperties": false,
+
+  "required": [
+    "$schema",
+    "version",
+    "rootDir",
+    "packageManager",
+    "runtime",
+    "language",
+    "framework",
+    "architecture"
+  ],
 
   "properties": {
     "$schema": {
@@ -15,123 +25,38 @@
     "version": {
       "type": "string",
       "pattern": "^\\d+\\.\\d+\\.\\d+$",
-      "description": "Semver version of config"
+      "description": "Semver version"
     },
 
-    "project": {
-      "type": "object",
-      "required": ["rootDir", "packageManager", "type"],
-      "additionalProperties": false,
-      "properties": {
-        "rootDir": {
-          "type": "string",
-          "default": ".",
-          "description": "Project root directory"
-        },
-        "packageManager": {
-          "type": "string",
-          "enum": ["npm", "pnpm", "bun", "yarn"],
-          "default": "npm",
-          "description": "Package manager"
-        },
-        "type": {
-          "type": "string",
-          "enum": ["backend"],
-          "description": "Project type"
-        }
-      }
+    "rootDir": {
+      "type": "string",
+      "default": ".",
+      "description": "Project root directory"
     },
 
-    "stack": {
-      "type": "object",
-      "required": ["runtime", "language", "framework", "architecture"],
-      "additionalProperties": false,
-      "properties": {
-        "runtime": {
-          "type": "string",
-          "enum": ["node", "deno", "bun"],
-          "description": "Runtime environment"
-        },
-        "language": {
-          "type": "string",
-          "enum": ["typescript"],
-          "default": "typescript",
-          "description": "Programming language"
-        },
-        "framework": {
-          "type": "string",
-          "description": "Backend framework"
-        },
-        "architecture": {
-          "type": "string",
-          "description": "Project architecture"
-        }
-      },
+    "packageManager": {
+      "type": "string",
+      "enum": ["npm", "pnpm", "bun", "yarn"],
+      "default": "npm"
+    },
 
-      "allOf": [
-        {
-          "if": {
-            "properties": { "runtime": { "const": "node" } }
-          },
-          "then": {
-            "properties": {
-              "framework": {
-                "enum": ["express", "nestjs", "fastify"]
-              }
-            }
-          }
-        },
-        {
-          "if": {
-            "properties": { "runtime": { "const": "deno" } }
-          },
-          "then": {
-            "properties": {
-              "framework": {
-                "enum": ["hono"]
-              }
-            }
-          }
-        },
-        {
-          "if": {
-            "properties": { "runtime": { "const": "bun" } }
-          },
-          "then": {
-            "properties": {
-              "framework": {
-                "enum": ["hono", "express"]
-              }
-            }
-          }
-        },
-        {
-          "if": {
-            "properties": { "framework": { "const": "nestjs" } }
-          },
-          "then": {
-            "properties": {
-              "architecture": {
-                "enum": ["modular"]
-              }
-            }
-          }
-        },
-        {
-          "if": {
-            "properties": {
-              "framework": { "enum": ["express", "fastify", "hono"] }
-            }
-          },
-          "then": {
-            "properties": {
-              "architecture": {
-                "enum": ["mvc", "feature"]
-              }
-            }
-          }
-        }
-      ]
+    "runtime": {
+      "type": "string",
+      "enum": ["node", "deno", "bun"]
+    },
+
+    "language": {
+      "type": "string",
+      "enum": ["typescript"],
+      "default": "typescript"
+    },
+
+    "framework": {
+      "type": "string"
+    },
+
+    "architecture": {
+      "type": "string"
     },
 
     "database": {
@@ -144,12 +69,10 @@
           "properties": {
             "engine": {
               "type": "string",
-              "enum": ["mongodb", "postgresql", "mysql"],
-              "description": "Database engine"
+              "enum": ["mongodb", "postgresql", "mysql"]
             },
             "adapter": {
-              "type": "string",
-              "description": "ORM for selected database"
+              "type": "string"
             }
           },
 
@@ -166,7 +89,6 @@
                 }
               }
             },
-
             {
               "if": {
                 "properties": { "engine": { "const": "postgresql" } }
@@ -179,7 +101,6 @@
                 }
               }
             },
-
             {
               "if": {
                 "properties": { "engine": { "const": "mysql" } }
@@ -195,24 +116,82 @@
           ]
         }
       ]
+    }
+  },
+
+  "allOf": [
+    {
+      "if": {
+        "properties": { "runtime": { "const": "node" } }
+      },
+      "then": {
+        "properties": {
+          "framework": {
+            "enum": ["express", "nestjs", "nextjs"]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": { "runtime": { "const": "deno" } }
+      },
+      "then": {
+        "properties": {
+          "framework": {
+            "enum": ["hono"]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": { "runtime": { "const": "bun" } }
+      },
+      "then": {
+        "properties": {
+          "framework": {
+            "enum": ["hono", "express"]
+          }
+        }
+      }
     },
 
-    "meta": {
-      "type": "object",
-      "required": ["createdAt", "createdBy"],
-      "additionalProperties": false,
-      "properties": {
-        "createdAt": {
-          "type": "string",
-          "format": "date-time",
-          "description": "ISO timestamp"
-        },
-        "createdBy": {
-          "type": "string",
-          "pattern": "^servercn@\\d+\\.\\d+\\.\\d+$",
-          "description": "CLI version used to create project"
+    {
+      "if": {
+        "properties": { "framework": { "const": "nestjs" } }
+      },
+      "then": {
+        "properties": {
+          "architecture": {
+            "enum": ["modular"]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": { "framework": { "const": "express" } }
+      },
+      "then": {
+        "properties": {
+          "architecture": {
+            "enum": ["mvc", "feature"]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": { "framework": { "const": "nextjs" } }
+      },
+      "then": {
+        "properties": {
+          "architecture": {
+            "enum": ["file-api"]
+          }
         }
       }
     }
-  }
+  ]
 }
