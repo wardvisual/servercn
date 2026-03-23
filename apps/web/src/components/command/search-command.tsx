@@ -122,7 +122,7 @@ export function SearchCommand({
                 target="_blank"
                 onClick={() => setOpen(!open)}>
                 <FaGithub className="size-2. text-primary cursor-pointer" />
-                ServerCN Github
+                Servercn Github
               </Link>
             </CommandItem>
             <CommandItem asChild className="mb-0.5">

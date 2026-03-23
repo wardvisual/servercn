@@ -103,7 +103,7 @@ export async function generateMetadata(props: {
   const filePath = getDocPath(slug);
   if (!fs.existsSync(filePath)) {
     return {
-      title: "Not Found | ServerCN Docs"
+      title: "Not Found | Servercn Docs"
     };
   }
 
@@ -113,35 +113,35 @@ export async function generateMetadata(props: {
     title: data.title ?? "Documentation",
     description:
       data.description ??
-      "ServerCN documentation for building modern Node.js backends.",
+      "Servercn documentation for building modern Node.js backends.",
     keywords: data.keywords ?? [
-      "ServerCN",
-      "ServerCN Docs",
-      "ServerCN Documentation",
-      "ServerCN Backend",
-      "ServerCN Backend Documentation"
+      "Servercn",
+      "Servercn Docs",
+      "Servercn Documentation",
+      "Servercn Backend",
+      "Servercn Backend Documentation"
     ],
     openGraph: {
-      title: data.title ?? "ServerCN Docs",
+      title: data.title ?? "Servercn Docs",
       description:
         data.description ??
-        "ServerCN documentation for backend components and guides.",
+        "Servercn documentation for backend components and guides.",
       url: `/docs/${slug.length > 0 ? slug.join("/") : ""}`,
-      siteName: "ServerCN",
+      siteName: "Servercn",
       type: "article",
       images: [
         {
           url: "/og-image.png",
           width: 1200,
           height: 630,
-          alt: "ServerCN Docs"
+          alt: "Servercn Docs"
         }
       ]
     },
     twitter: {
       card: "summary_large_image",
-      title: data.title ?? "ServerCN Docs",
-      description: data.description ?? "ServerCN backend documentation."
+      title: data.title ?? "Servercn Docs",
+      description: data.description ?? "Servercn backend documentation."
     }
   };
 }
@@ -291,7 +291,7 @@ export default async function DocsPage({
               lastSlug &&
               !RESTRICTED_FOLDER_STRUCTURE_PAGES.includes(lastSlug) && (
                 <>
-                  <h2 className="mt-8 mb-4 text-2xl font-semibold tracking-tight">
+                  <h2 className="mt-6 mb-2 text-2xl font-semibold tracking-tight">
                     File &amp; Folder Structure
                   </h2>
                   <ArchitectureTabs
@@ -313,7 +313,7 @@ export default async function DocsPage({
               {lastSlug &&
                 !RESTRICTED_FOLDER_STRUCTURE_PAGES.includes(lastSlug) && (
                   <>
-                    <h2 className="mt-8 mb-4 text-2xl font-semibold tracking-tight">
+                    <h2 className="mt-6 mb-2 text-2xl font-semibold tracking-tight">
                       File &amp; Folder Structure
                     </h2>
                     <ArchitectureTabs

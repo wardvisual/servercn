@@ -16,7 +16,7 @@ import {
 import { usePathname } from "next/navigation";
 
 const defaultPrompt =
-  "Read this ServerCN documentation properly and provide information i ask. \nMake it clear and concise.";
+  "Read this Servercn documentation properly and provide information i ask. \nMake it clear and concise.";
 
 export function OpenInAi() {
   const pathname = usePathname();

@@ -1,4 +1,4 @@
-import WhyServerCN from "@/components/home/feature-section";
+import WhyServercn from "@/components/home/feature-section";
 import HeroSection from "@/components/home/hero-section";
 
 import CallToAction from "@/components/home/cta-section";
@@ -15,7 +15,7 @@ export default function Home() {
       <JSGuideCTA />
       <SupportedFrameworks />
       <OAuthSection />
-      <WhyServerCN />
+      <WhyServercn />
       <CallToAction />
     </main>
   );

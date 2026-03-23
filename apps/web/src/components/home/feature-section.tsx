@@ -44,7 +44,7 @@ const features: IFeature[] = [
     icon: Code2,
     title: "You Own the Code",
     description:
-      "ServerCN copies code directly into your project. No runtime dependencies. No lock-in. No hidden fees."
+      "Servercn copies code directly into your project. No runtime dependencies. No lock-in. No hidden fees."
   },
   {
     icon: Layers,
@@ -105,11 +105,11 @@ const features: IFeature[] = [
   }
 ];
 
-export default function WhyServerCN() {
+export default function WhyServercn() {
   return (
     <Section id="feature" className="px-0">
       <div className="mb-12 text-center">
-        <Heading className="text-3xl font-bold">Why ServerCN</Heading>
+        <Heading className="text-3xl font-bold">Why Servercn</Heading>
         <SubHeading className="text-muted-foreground mt-4">
           Everything you need to build a backend, without the boilerplate.
         </SubHeading>
