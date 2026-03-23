@@ -43,7 +43,6 @@
         "frameworks": {
           "type": "object",
           "description": "Supported frameworks",
-          "required": ["express"],
           "additionalProperties": false,
           "properties": {
             "express": {
@@ -51,8 +50,16 @@
             },
             "nestjs": {
               "$ref": "#/$defs/framework"
+            },
+            "nextjs": {
+              "$ref": "#/$defs/framework"
             }
-          }
+          },
+          "anyOf": [
+            { "required": ["express"] },
+            { "required": ["nestjs"] },
+            { "required": ["nextjs"] }
+          ]
         }
       }
     },
