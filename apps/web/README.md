@@ -1,22 +1,20 @@
-# ServerCN
+# Servercn
 
-> **Backend component registry for Node.js & Typescript**
+> **Backend component registry for Node.js & TypeScript**
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?logo=typescript&logoColor=white)
 ![Node.js](https://img.shields.io/badge/Node.js-339933?logo=node.js&logoColor=white)
 
-**ServerCN** is a backend component registry for Node.js & TypeScript. It provides a robust collection of pre-configured components, boilerplates, and utilities for **Node.js** and **TypeScript**, enabling developers to scaffold production-ready code in seconds.
+**Servercn** is a backend component registry for Node.js & TypeScript. It provides a robust collection of pre-configured components, boilerplates, and utilities for **Node.js** and **TypeScript**, enabling developers to scaffold production-ready code in seconds.
 
-> Shadcn ecosystem for nodejs backend
+> Shadcn ecosystem for Node.js backend
 
----
+![Servercn Components]('./public/og-image.png')
 
-![ServerCN Components](./apps/web/public/assets/hero.png)
+[Visit website](https://servercn.vercel.app/docs/cli)
 
-[Visit website: https://servercn.vercel.app](https://servercn.vercel.app/docs/cli)
-
-[Join discord: https://discord.gg/2fXqnTXF8d](https://discord.gg/2fXqnTXF8d)
+[Join discord](https://discord.gg/2fXqnTXF8d)
 
 ## 🛠️ Usage
 
@@ -108,13 +106,13 @@ npx servercn-cli add health-check
 
 [Visit for more](https://servercn.vercel.app/docs/cli)
 
-- List all available registry item.
+- List all available registry items.
 
   ```bash
   npx servercn-cli ls --all
   ```
 
-- List all available registry item in JSON structure.
+- List all available registry items in JSON structure.
 
   ```bash
   npx servercn-cli ls --all --json
@@ -138,13 +136,13 @@ npx servercn-cli add health-check
   npx servercn-cli ls cp
   ```
 
-- List available all foundation.
+- List all available foundations.
 
   ```bash
   npx servercn-cli ls fd
   ```
 
-- List available schema.
+- List available schemas.
 
   ```bash
   npx servercn-cli ls sc
@@ -174,10 +172,10 @@ This project is licensed under the [MIT License](LICENSE).
 
 ## Stargazers over time
 
-[![Stargazers over time](https://starchart.cc/AkkalDhami/servercn.svg?variant=adaptive)](https://starchart.cc/AkkalDhami/servercn)
+[![RepoStars](https://repostars.dev/api/embed?repo=AkkalDhami%2Fservercn&theme=dark)](https://repostars.dev/?repos=AkkalDhami%2Fservercn&theme=dark)
 
----
+***
 
 <p align="center">
-  Built with 🗡️ by <a target="_blank" href="https://github.com/akkaldhami">Akkal Dhami</a> and the <a target="_blank" href="https://servercn.vercel.app/contributors">ServerCN contributors</a>
+  Built with 🪓 by <a target="_blank" href="https://github.com/akkaldhami">Akkal Dhami</a> and the <a target="_blank" href="https://servercn.vercel.app/contributors">servercn contributors</a>
 </p>

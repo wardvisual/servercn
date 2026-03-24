@@ -4,7 +4,7 @@ export interface ISchema {
   new?: boolean;
 }
 
-export type Framework = "express" | "nestjs";
+export type Framework = "express" | "nestjs" | "nextjs";
 export type StatusType =
   | "stable"
   | "unstable"
@@ -45,8 +45,8 @@ export type RegistryFile = {
   content: string;
 };
 
-export type ArchitectureType = "mvc" | "feature" | "modular";
-export type FrameworkType = "express" | "nestjs";
+export type ArchitectureType = "mvc" | "feature" | "modular" | "file-api";
+export type FrameworkType = "express" | "nextjs" | "nestjs";
 
 export type FileNode =
   | {

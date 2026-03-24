@@ -48,7 +48,7 @@ export const ContributorCard: React.FC<ContributorCardProps> = ({
       <img
         src={contributor.avatar_url}
         alt={contributor.login}
-        className="mb-4 rounded-md"
+        className="mb-4 w-full h-[70%] object-cover rounded-md"
       />
       <h3 className="text-lg font-semibold">{contributor.login}</h3>
 

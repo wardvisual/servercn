@@ -17,7 +17,7 @@ import { Kbd } from "@/components/ui/kbd";
 import Link from "next/link";
 import { Route } from "next";
 import { CircleIcon } from "lucide-react";
-import { FRAMEWORK_SECTIONS, getRegistryTypeItems } from "@/lib/source";
+import { getRegistryTypeItems, injectFramework } from "@/lib/source";
 import { cn } from "@/lib/utils";
 import { ITEM_GROUP_NAMING, PAGE_ITEMS } from "../layouts/docs-sidebar";
 import { FaDiscord, FaGithub } from "react-icons/fa";
@@ -41,30 +41,6 @@ export function SearchCommand({
 }) {
   const [open, setOpen] = React.useState(false);
   const { framework } = useFramework();
-
-  // Helper function to inject framework into URL if applicable
-  const injectFramework = (url: string): string => {
-    if (!framework) return url;
-
-    const segments = url.split("/").filter(Boolean);
-
-    // Check if URL starts with /docs
-    if (segments[0] !== "docs") return url;
-
-    // Check if the section supports frameworks
-    const section = segments[1];
-    if (FRAMEWORK_SECTIONS.includes(section)) {
-      // Remove existing framework if present
-      if (segments[1] === "express" || segments[1] === "nestjs") {
-        segments.splice(1, 1);
-      }
-      // Insert the stored framework
-      segments.splice(1, 0, framework);
-      return `/${segments.join("/")}`;
-    }
-
-    return url;
-  };
 
   React.useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -170,7 +146,9 @@ export function SearchCommand({
               {guideItems.map(item => (
                 <CommandItem asChild key={item.title}>
                   <Link
-                    href={injectFramework(item.url as string) as Route}
+                    href={
+                      injectFramework(item.url as string, framework) as Route
+                    }
                     onClick={() => setOpen(!open)}
                     className="mb-0.5 w-full cursor-pointer">
                     <CircleIcon className="text-muted-secondary size-2.5" />{" "}
@@ -185,7 +163,9 @@ export function SearchCommand({
               {foundations.map(item => (
                 <CommandItem asChild key={item.title}>
                   <Link
-                    href={injectFramework(item.url as string) as Route}
+                    href={
+                      injectFramework(item.url as string, framework) as Route
+                    }
                     onClick={() => setOpen(!open)}
                     className="mb-0.5 w-full cursor-pointer">
                     <CircleIcon className="text-muted-secondary size-2.5" />{" "}
@@ -200,7 +180,9 @@ export function SearchCommand({
               {toolings.map(item => (
                 <CommandItem asChild key={item.title}>
                   <Link
-                    href={injectFramework(item.url as string) as Route}
+                    href={
+                      injectFramework(item.url as string, framework) as Route
+                    }
                     onClick={() => setOpen(!open)}
                     className="mb-0.5 w-full cursor-pointer">
                     <CircleIcon className="text-muted-secondary size-2.5" />{" "}
@@ -215,7 +197,9 @@ export function SearchCommand({
               {components.map(item => (
                 <CommandItem asChild key={item.title}>
                   <Link
-                    href={injectFramework(item.url as string) as Route}
+                    href={
+                      injectFramework(item.url as string, framework) as Route
+                    }
                     onClick={() => setOpen(!open)}
                     className="mb-0.5 w-full cursor-pointer">
                     <CircleIcon className="text-muted-secondary size-2.5" />{" "}
@@ -230,7 +214,9 @@ export function SearchCommand({
               {blueprints.map(item => (
                 <CommandItem asChild key={item.title}>
                   <Link
-                    href={injectFramework(item.url as string) as Route}
+                    href={
+                      injectFramework(item.url as string, framework) as Route
+                    }
                     onClick={() => setOpen(!open)}
                     className="mb-0.5 w-full cursor-pointer">
                     <CircleIcon className="text-muted-secondary size-2.5" />{" "}
@@ -245,7 +231,9 @@ export function SearchCommand({
               {schemas.map(item => (
                 <CommandItem asChild key={item.title}>
                   <Link
-                    href={injectFramework(item.url as string) as Route}
+                    href={
+                      injectFramework(item.url as string, framework) as Route
+                    }
                     onClick={() => setOpen(!open)}
                     className="cursor-pointer pl-4 capitalize">
                     <CircleIcon className="text-muted-secondary mb-1 size-2.5" />

@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
-export type Framework = "express" | "nestjs";
+export type Framework = "express" | "nestjs" | "nextjs";
 
 interface FrameworkState {
   framework: Framework;

@@ -1,4 +1,4 @@
-import { Framework, IRegistryItems, ItemType } from "@/@types/registry";
+import { Framework, FrameworkType, IRegistryItems, ItemType } from "@/@types/registry";
 import registry from "@/data/registry.json";
 
 export const RESTRICTED_FOLDER_STRUCTURE_PAGES = [
@@ -13,6 +13,31 @@ export const FRAMEWORK_SECTIONS = [
   "foundations",
   "schemas"
 ];
+
+export function injectFramework(
+  url: string,
+  framework?: FrameworkType | string
+): string {
+  if (!framework) return url;
+
+  const originalUrl = url;
+  const segments = url.split("/").filter(Boolean);
+  if (segments[0] !== "docs") return url;
+
+  if (
+    segments[1] === "express" ||
+    segments[1] === "nestjs" ||
+    segments[1] === "nextjs"
+  ) {
+    segments.splice(1, 1);
+  }
+
+  const section = segments[1];
+  if (!FRAMEWORK_SECTIONS.includes(section)) return originalUrl;
+
+  segments.splice(1, 0, framework);
+  return `/${segments.join("/")}`;
+}
 
 const STABLE_REGISTRY = registry.items;
 
@@ -79,7 +104,7 @@ export const findNeighbour = (
 
 export function getRegistryTypeItems(
   type: ItemType,
-  framework: Framework = "express"
+  framework: FrameworkType = "express"
 ): IRegistryItems[] {
   const items = registry.items
     .sort((a, b) => a.title.localeCompare(b.title))

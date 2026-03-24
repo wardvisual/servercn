@@ -1,21 +1,22 @@
 "use client";
 
+import { FrameworkType } from "@/@types/registry";
 import { cn } from "@/lib/utils";
 import { useRouter, useSearchParams } from "next/navigation";
 
-export type FrameworkType = "express" | "nestjs" | null;
-
-export type ArchType = "mvc" | "feature" | "modular";
+export type ArchType = "mvc" | "feature" | "file-api" | "modular";
 
 const ARCHS_BY_FRAMEWORK: Record<NonNullable<FrameworkType>, ArchType[]> = {
   express: ["mvc", "feature"],
+  nextjs: ["file-api"],
   nestjs: ["modular"]
 };
 
 const archNaming: Record<ArchType, string> = {
   mvc: "Model-View-Controller (MVC)",
   feature: "Feature-Based (Module, Shared)",
-  modular: "Modular (NestJS)"
+  modular: "Modular (NestJS)",
+  "file-api": "File-Based API (NextJS)"
 };
 
 export default function ArchitectureTabs({
@@ -42,9 +43,9 @@ export default function ArchitectureTabs({
   }
 
   // If only one architecture available, don't show tabs
-  if (availableArchs.length === 1) {
-    return null;
-  }
+  // if (availableArchs.length === 1) {
+  //   return null;
+  // }
 
   return (
     <div
@@ -55,7 +56,7 @@ export default function ArchitectureTabs({
       <div
         className={cn(
           "bg-background grid gap-3",
-          availableArchs.length === 2 ? "grid-cols-2" : "grid-cols-3"
+          availableArchs.length === 2 ? "grid-cols-2" : "grid-cols-1"
         )}>
         {availableArchs.map(arch => (
           <button

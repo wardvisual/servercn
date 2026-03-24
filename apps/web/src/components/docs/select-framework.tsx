@@ -9,7 +9,7 @@ import {
   SelectValue
 } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
-import { SiExpress, SiNestjs } from "react-icons/si";
+import { SiExpress, SiNestjs, SiNextdotjs } from "react-icons/si";
 import { usePathname, useRouter } from "next/navigation";
 import { Route } from "next";
 import {
@@ -34,7 +34,9 @@ export function SelectFramework() {
   // Detect current framework from URL
   const segments = pathname.split("/").filter(Boolean);
   const currentFrameworkFromUrl: FrameworkType | null =
-    segments[1] === "express" || segments[1] === "nestjs"
+    segments[1] === "express" ||
+    segments[1] === "nestjs" ||
+    segments[1] === "nextjs"
       ? (segments[1] as FrameworkType)
       : null;
 
@@ -58,7 +60,11 @@ export function SelectFramework() {
     if (currentSegments[0] !== "docs") return;
 
     // Remove existing framework if present
-    if (currentSegments[1] === "express" || currentSegments[1] === "nestjs") {
+    if (
+      currentSegments[1] === "express" ||
+      currentSegments[1] === "nestjs" ||
+      currentSegments[1] === "nextjs"
+    ) {
       currentSegments.splice(1, 1);
     }
 
@@ -92,6 +98,13 @@ export function SelectFramework() {
               <div className="flex items-center gap-3 font-medium">
                 <SiExpress className="text-primary size-4" />
                 Express.js
+              </div>
+            </SelectItem>
+
+            <SelectItem value="nextjs">
+              <div className="flex items-center gap-3 font-medium">
+                <SiNextdotjs className="text-primary size-4" />
+                Next.js
               </div>
             </SelectItem>
 
