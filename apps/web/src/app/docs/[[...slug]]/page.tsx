@@ -157,14 +157,21 @@ export default async function DocsPage({
 
   // Remove framework segment if present to get the actual content slug
   let actualSlug = slug;
-  if (slug && (slug[0] === "express" || slug[0] === "nestjs")) {
+  if (
+    slug &&
+    (slug[0] === "express" || slug[0] === "nestjs" || slug[0] === "nextjs")
+  ) {
     actualSlug = slug.slice(1);
   }
 
   // Determine current architecture based on framework or URL param
   const currentArch =
     (resolvedSearchParams?.arch as string) ||
-    (slug[0] === "nestjs" ? "modular" : "mvc");
+    (slug[0] === "nestjs"
+      ? "modular"
+      : slug[0] === "nextjs"
+        ? "file-api"
+        : "mvc");
   const lastComponentIndex = actualSlug.length > 0 ? actualSlug.length - 1 : -1;
   const lastSlug =
     lastComponentIndex >= 0 ? actualSlug[lastComponentIndex] : undefined;
@@ -181,7 +188,8 @@ export default async function DocsPage({
 
   // Extract current framework from URL if present
   const currentFramework =
-    slug && (slug[0] === "express" || slug[0] === "nestjs")
+    slug &&
+    (slug[0] === "express" || slug[0] === "nestjs" || slug[0] === "nextjs")
       ? slug[0]
       : undefined;
 
@@ -190,6 +198,7 @@ export default async function DocsPage({
     database,
     orm
   } = resolveRegistryItem(slug[slug.length - 1]);
+
   return (
     <>
       <FrameworkRedirect />

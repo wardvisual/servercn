@@ -1,4 +1,5 @@
 import { FileIcon } from "lucide-react";
+import { FaGitAlt, FaStar } from "react-icons/fa";
 import { TbBrandTypescript } from "react-icons/tb";
 
 type IconProps = React.HTMLAttributes<SVGElement>;
@@ -144,6 +145,20 @@ export const LanguageIcons = {
     </svg>
   ),
 
+  tsconfig: (props: IconProps) => (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 32 32"
+      {...props}>
+      <path
+        fill="#007acc"
+        d="M23.827 8.243a4.4 4.4 0 0 1 2.223 1.281a6 6 0 0 1 .852 1.143c.011.045-1.534 1.083-2.471 1.662c-.034.023-.169-.124-.322-.35a2.01 2.01 0 0 0-1.67-1c-1.077-.074-1.771.49-1.766 1.433a1.3 1.3 0 0 0 .153.666c.237.49.677.784 2.059 1.383c2.544 1.095 3.636 1.817 4.31 2.843a5.16 5.16 0 0 1 .416 4.333a4.76 4.76 0 0 1-3.932 2.815a11 11 0 0 1-2.708-.028a6.53 6.53 0 0 1-3.616-1.884a6.3 6.3 0 0 1-.926-1.371a3 3 0 0 1 .327-.208c.158-.09.756-.434 1.32-.761l1.024-.6l.214.312a4.8 4.8 0 0 0 1.35 1.292a3.3 3.3 0 0 0 3.458-.175a1.545 1.545 0 0 0 .2-1.974c-.276-.395-.84-.727-2.443-1.422a8.8 8.8 0 0 1-3.349-2.055a4.7 4.7 0 0 1-.976-1.777a7.1 7.1 0 0 1-.062-2.268a4.33 4.33 0 0 1 3.644-3.374a9 9 0 0 1 2.691.084m-8.343 1.483l.011 1.454h-4.63v13.148H7.6V11.183H2.97V9.755a14 14 0 0 1 .04-1.466c.017-.023 2.832-.034 6.245-.028l6.211.017Z"
+      />
+    </svg>
+  ),
+
   ts: (props: IconProps) => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -153,7 +168,14 @@ export const LanguageIcons = {
       height="100"
       viewBox="0 0 48 48"
       {...props}>
-      <rect width="36" height="36" rx="3" ry="3" x="6" y="6" fill="#1976d2"></rect>
+      <rect
+        width="36"
+        height="36"
+        rx="3"
+        ry="3"
+        x="6"
+        y="6"
+        fill="#1976d2"></rect>
       <polygon
         fill="#fff"
         points="27.49,22 14.227,22 14.227,25.264 18.984,25.264 18.984,40 22.753,40 22.753,25.264 27.49,25.264"></polygon>
@@ -197,21 +219,15 @@ export const LanguageIcons = {
   ),
   mdx: (props: IconProps) => (
     <svg
+      {...props}
       xmlns="http://www.w3.org/2000/svg"
       width="24"
       height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className="icon icon-tabler icons-tabler-outline icon-tabler-markdown"
-      {...props}>
-      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-      <path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10" />
-      <path d="M7 15v-6l2 2l2 -2v6" />
-      <path d="M14 13l2 2l2 -2m-2 2v-6" />
+      viewBox="0 0 32 32">
+      <path
+        fill="#ffca28"
+        d="m14 10l-4 3.5L6 10H4v12h4v-6l2 2l2-2v6h4V10zm12 6v-6h-4v6h-4l6 8l6-8z"
+      />
     </svg>
   ),
   sql: (props: IconProps) => (
@@ -266,6 +282,131 @@ export const LanguageIcons = {
       <path d="M17 21l4 -4" />
       <path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
     </svg>
+  ),
+  postcss: (props: IconProps) => (
+    <svg
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 32 32">
+      <path fill="#e53935" d="M20 12v8h-8v-8zm2-2H10v12h12z" />
+      <path fill="#e53935" d="M16 5.488L26.159 20H5.84zM16 2L2 22h28z" />
+      <path
+        fill="#e53935"
+        d="M16 13a3 3 0 1 1-3 3a3.003 3.003 0 0 1 3-3m0-2a5 5 0 1 0 5 5a5 5 0 0 0-5-5"
+      />
+      <path
+        fill="#e53935"
+        d="M16 4A12 12 0 1 1 4 16A12.014 12.014 0 0 1 16 4m0-2a14 14 0 1 0 14 14A14 14 0 0 0 16 2"
+      />
+    </svg>
+  ),
+  css: (props: IconProps) => (
+    <svg
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 128 128">
+      <path
+        fill="#639"
+        d="M0 0h107.52C118.831 0 128 9.168 128 20.48v87.04c0 11.312-9.168 20.48-20.48 20.48H20.48C9.169 128 0 118.832 0 107.52Z"
+      />
+      <path
+        fill="#fff"
+        d="M45.836 117.762c-8.219-.008-13.293-4.64-13.195-13.16V83.05q0-6.481 3.793-9.852c4.543-4.379 15.082-4.644 19.53.067c2.743 2.417 3.778 7.355 3.532 11.964H50.06c.074-1.808-.024-4.554-1.09-5.586c-1.383-1.87-5.035-1.652-6.004.297c-.594 1.059-.89 2.621-.89 4.696v18.71q0 5.884 4.09 5.95q1.914-.001 2.905-1.39c.918-1.099 1.063-3.528.989-5.29h9.437c.645 8.969-4.652 15.254-13.66 15.144Zm29.957 0c-9.11.125-13.184-6.36-12.934-15.145h8.91c-.25 3.832 1.067 7.32 4.223 7.078q2.11 0 2.969-1.324c1.086-1.613 1.293-6.265-.266-8.066c-1.085-1.735-4.996-3.266-7.058-4.297q-4.423-2.115-6.367-5.027c-2.93-4.305-2.657-13.754 1.449-17.586c3.992-4.727 14.414-4.942 18.41-.098c2.465 2.496 3.54 7.41 3.332 11.934h-8.578c.074-1.86-.102-4.86-.824-5.95q-.762-1.39-2.871-1.39q-3.762.001-3.762 4.496c.027 3.18 1.27 4.488 4.16 5.816c3.742 1.453 8.5 3.938 10.227 6.942c5.144 9.16 1.613 23.148-11.02 22.613Zm28.77 0c-9.11.125-13.184-6.36-12.934-15.145h8.91c-.25 3.832 1.066 7.32 4.223 7.078q2.108 0 2.969-1.324c1.085-1.613 1.289-6.265-.266-8.066c-1.086-1.735-4.996-3.266-7.059-4.297q-4.423-2.115-6.367-5.027c-2.93-4.305-2.656-13.754 1.45-17.586c3.992-4.727 14.413-4.942 18.41-.098c2.464 2.496 3.539 7.41 3.332 11.934h-8.579c.07-1.86-.101-4.86-.824-5.95q-.762-1.39-2.87-1.39q-3.763.001-3.763 4.496c.028 3.18 1.27 4.488 4.16 5.816c3.743 1.453 8.5 3.938 10.227 6.942c5.145 9.16 1.614 23.148-11.02 22.613Z"
+      />
+    </svg>
+  ),
+  nextjs: (props: IconProps) => (
+    <svg
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24">
+      <path
+        fill="currentColor"
+        d="m11.345 2.405l-.303.027c-2.84.256-5.501 1.789-7.187 4.144a9.9 9.9 0 0 0-1.765 4.37c-.08.548-.09.71-.09 1.455s.01.907.09 1.457c.543 3.755 3.216 6.91 6.84 8.079c.65.209 1.334.351 2.112.438c.303.033 1.613.033 1.916 0c1.343-.15 2.48-.481 3.603-1.054c.172-.088.205-.112.182-.131c-.016-.012-.749-.995-1.629-2.184l-1.599-2.16l-2.004-2.965a287 287 0 0 0-2.017-2.963c-.008-.002-.016 1.315-.02 2.924c-.006 2.817-.008 2.93-.043 2.997a.36.36 0 0 1-.172.178c-.063.03-.117.037-.412.037h-.339l-.09-.057a.4.4 0 0 1-.13-.143l-.042-.088l.004-3.919l.006-3.921l.06-.076a.5.5 0 0 1 .145-.12c.08-.039.112-.043.45-.043c.399 0 .465.016.569.13c.03.03 1.114 1.665 2.412 3.633l3.946 5.976l1.583 2.398l.08-.052c.71-.462 1.46-1.118 2.055-1.803a9.95 9.95 0 0 0 2.354-5.111c.08-.55.09-.712.09-1.457c0-.744-.01-.907-.09-1.456c-.543-3.755-3.216-6.91-6.84-8.079a10.5 10.5 0 0 0-2.083-.436c-.187-.02-1.48-.04-1.642-.025m4.094 6.048c.094.047.17.137.197.23c.016.051.02 1.138.016 3.587l-.006 3.515l-.62-.95l-.621-.95V11.33c0-1.652.008-2.58.02-2.625a.4.4 0 0 1 .193-.246c.08-.041.11-.045.416-.045c.29 0 .34.004.405.039"
+      />
+    </svg>
+  ),
+  eslint: (props: IconProps) => (
+    <svg
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 128 128">
+      <path
+        fill="#8080f2"
+        d="m38.662 48.67l24.26-14.04a2.19 2.19 0 0 1 1.962 0l24.363 14.04c.62.31 1.033 1.032 1.033 1.651v28.08c0 .723-.413 1.342-1.033 1.755l-24.26 14.04a2.19 2.19 0 0 1-1.962 0l-24.363-14.04c-.62-.31-1.033-1.032-1.033-1.755v-28.08c0-.62.413-1.342 1.033-1.651"
+      />
+      <path
+        fill="#4b32c3"
+        d="m127.135 61.47l-29.01-50.585c-1.032-1.858-2.993-3.2-5.161-3.2H34.945c-2.064 0-4.026 1.342-5.161 3.2L.774 61.368a6.18 6.18 0 0 0 0 5.987l29.01 50.173c1.032 1.858 2.993 2.787 5.161 2.787h58.122c2.065 0 4.026-.929 5.162-2.684l29.01-50.173c1.032-2.064 1.032-4.232-.104-5.987M103.08 85.73c0 .723-.413 1.445-1.136 1.755l-36.958 21.37a1.88 1.88 0 0 1-2.065 0l-37.06-21.266c-.62-.413-1.136-1.032-1.136-1.755V42.991c0-.722.413-1.445 1.136-1.754l37.061-21.37a1.88 1.88 0 0 1 2.065 0l37.062 21.37c.619.412 1.135 1.032 1.135 1.754v42.74z"
+      />
+    </svg>
+  ),
+  svg: (props: IconProps) => (
+    <svg
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 30 30">
+      <path
+        fill="#ffb300"
+        d="M29.168 14.03a2.7 2.7 0 0 0-1.968-.83a2.51 2.51 0 0 0-1.929.8h-4.443l3.078-3.078a2.835 2.835 0 0 0 2.857-2.842a2.6 2.6 0 0 0-.831-1.969a2.82 2.82 0 0 0-2.014-.788a2.67 2.67 0 0 0-1.968.788a2.36 2.36 0 0 0-.812 1.922L18 11.17V6.726a2.51 2.51 0 0 0 .8-1.929a2.7 2.7 0 0 0-.832-1.968a2.745 2.745 0 0 0-3.936 0a2.7 2.7 0 0 0-.832 1.968a2.51 2.51 0 0 0 .8 1.93v4.443l-3.138-3.138a2.36 2.36 0 0 0-.812-1.922a2.66 2.66 0 0 0-1.968-.788a2.83 2.83 0 0 0-2.014.788a2.6 2.6 0 0 0-.831 1.969a2.74 2.74 0 0 0 .831 2.013a2.8 2.8 0 0 0 2.026.829l3.078 3.078H6.729a2.51 2.51 0 0 0-1.929-.8a2.7 2.7 0 0 0-1.968.831a2.745 2.745 0 0 0 0 3.937a2.7 2.7 0 0 0 1.968.832a2.51 2.51 0 0 0 1.929-.8h4.443l-3.078 3.077a2.835 2.835 0 0 0-2.857 2.842a2.6 2.6 0 0 0 .831 1.969a2.82 2.82 0 0 0 2.014.788a2.67 2.67 0 0 0 1.968-.788a2.36 2.36 0 0 0 .812-1.922L14 20.827v4.444a2.51 2.51 0 0 0-.8 1.929a2.784 2.784 0 0 0 4.768 1.968A2.7 2.7 0 0 0 18.8 27.2a2.51 2.51 0 0 0-.8-1.929v-4.444l3.138 3.138a2.36 2.36 0 0 0 .812 1.922a2.66 2.66 0 0 0 1.968.788a2.83 2.83 0 0 0 2.014-.788a2.6 2.6 0 0 0 .831-1.969a2.74 2.74 0 0 0-.831-2.013a2.8 2.8 0 0 0-2.026-.829L20.828 18h4.443a2.51 2.51 0 0 0 1.93.8a2.784 2.784 0 0 0 1.967-4.769Z"
+      />
+    </svg>
+  ),
+  commitlint: (props: IconProps) => (
+    <svg
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24">
+      <path
+        fill="#009688"
+        d="M2.47 2.922V8.37h1.813V2.922zm12.708 1.816a7.27 7.27 0 0 0-6.946 5.127L6.1 12l2.133 2.133c.916 2.969 3.677 5.13 6.945 5.13c4.013 0 7.262-3.25 7.262-7.263s-3.25-7.262-7.262-7.262m2.942 3.703l1.342 1.63l-5.49 5.488l-3.179-3.467l1.34-1.34l1.838 1.838zM3.377 10.184c-.998 0-1.816.817-1.816 1.816a1.817 1.817 0 1 0 1.816-1.816M2.47 15.63v5.448h1.814V15.63z"
+      />
+    </svg>
+  ),
+  prettier: (props: IconProps) => (
+    <svg
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 16 16">
+      <path fill="#f44336" d="M2 8h4v1H2zm0 6h4v1H2zm9-10h3v1h-3zM2 2h3v1H2z" />
+      <path
+        fill="#f9a825"
+        d="M9 2h3v1H9zm1 4h4v1h-4zm-5 6h1v1H5zm-3-2h6v1H2z"
+      />
+      <path fill="#26a69a" d="M2 12h3v1H2zm7-4h5v1H9zM2 4h4v1H2zm3-2h4v1H5z" />
+      <path fill="#ba68c8" d="M2 6h3v1H2zm7-2h2v1H9zm-1 6h4v1H8z" />
+    </svg>
+  ),
+  shadcn: (props: IconProps) => (
+    <svg
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24">
+      <path
+        fill="none"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="1.5"
+        d="m18 12l-6 6m6-14L4 18"
+      />
+    </svg>
   )
 };
 
@@ -273,11 +414,78 @@ export function getIconForLanguageExtension(
   language: string,
   fileName?: string
 ) {
-  if (fileName === "package.json") {
+  if (["package.json", ".nvmrc"].includes(fileName || "")) {
     return <LanguageIcons.nodejs className="size-4" />;
+  }
+  if (fileName === "tsconfig.json") {
+    return <LanguageIcons.tsconfig className="size-4" />;
+  }
+  if (fileName === "components.json") {
+    return <LanguageIcons.shadcn className="size-4" />;
+  }
+  if (fileName === "postcss.config.mjs") {
+    return <LanguageIcons.postcss className="size-4" />;
   }
   if (fileName?.startsWith(".env")) {
     return <LanguageIcons.env className="size-4" />;
+  }
+  if (
+    [
+      ".commitlintrc",
+      ".commitlintrc.json",
+      "commitlint.config.ts",
+      "commitlint.config.mjs",
+      "commitlint.config.cjs",
+      "commitlint.config.js",
+      ".commitlintrc.ts",
+      ".commitlintrc.mjs",
+      ".commitlintrc.cjs"
+    ].includes(fileName || "")
+  ) {
+    return <LanguageIcons.commitlint className="size-4" />;
+  }
+  if (
+    [
+      ".eslintrc.json",
+      ".eslintignore",
+      ".eslintrc.json",
+      "eslint.config.js",
+      "eslint.config.mjs",
+      "eslint.config.cjs",
+      "eslint.config.ts"
+    ].includes(fileName || "")
+  ) {
+    return <LanguageIcons.eslint className="size-4" />;
+  }
+  if (fileName?.startsWith("next.config")) {
+    return <LanguageIcons.nextjs className="size-4" />;
+  }
+  if (fileName?.startsWith("favicon.ico")) {
+    return <FaStar className="size-4 text-yellow-600" />;
+  }
+  if (
+    [
+      ".prettierrc.json",
+      ".prettierrc",
+      ".prettierignore",
+      "prettier.config.js",
+      "prettier.config.ts",
+      ".prettierrc.js",
+      ".prettierrc.ts",
+      ".prettierrc.cjs",
+      ".prettierrc.cts",
+      "prettier.config.mjs",
+      "prettier.config.cjs",
+      "prettier.config.cts"
+    ].includes(fileName || "")
+  ) {
+    return <LanguageIcons.prettier className="size-4" />;
+  }
+  if (fileName?.endsWith(".css")) {
+    return <LanguageIcons.css className="size-4" />;
+  }
+  if (fileName?.endsWith(".svg")) {
+    return <LanguageIcons.svg className="size-4" />;
   }
   if (fileName?.endsWith(".prisma")) {
     return <LanguageIcons.prisma className="size-4" />;
@@ -285,12 +493,20 @@ export function getIconForLanguageExtension(
   if (fileName?.endsWith(".d.ts")) {
     return <TbBrandTypescript className="size-4 text-[#3178c6]" />;
   }
-  if (
-    fileName?.endsWith(".sql") ||
-    fileName?.startsWith("db") ||
-    fileName?.startsWith("data")
-  ) {
+  if (fileName?.endsWith(".sql")) {
     return <LanguageIcons.sql className="size-4" />;
+  }
+  if (fileName?.endsWith(".tsx")) {
+    return <LanguageIcons.ts className="size-4" />;
+  }
+  if (fileName?.endsWith(".jsx")) {
+    return <LanguageIcons.js className="size-4" />;
+  }
+  if (fileName?.endsWith(".gitignore")) {
+    return <FaGitAlt className="size-4 text-[#e64a19]" />;
+  }
+  if (fileName?.endsWith(".ejs") || fileName?.endsWith(".html")) {
+    return <LanguageIcons.html className="size-4" />;
   }
   switch (language) {
     case "json":
@@ -308,8 +524,6 @@ export function getIconForLanguageExtension(
     case "sql":
       return <LanguageIcons.sql className="size-4" />;
 
-    case "text":
-      return <LanguageIcons.html className="size-4" />;
     case "mdx":
     case "md":
     case "markdown":

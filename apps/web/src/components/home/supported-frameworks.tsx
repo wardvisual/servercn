@@ -36,7 +36,7 @@ const FRAMEWORKS: Framework[] = [
     status: "available",
     description:
       "The battle-tested Node.js framework. Full component support — auth, middleware, error handling, and more.",
-    frameworks: ["express"]
+    frameworks: ["express"],
   },
   {
     name: "NestJS",
@@ -50,7 +50,7 @@ const FRAMEWORKS: Framework[] = [
   {
     name: "Next.js",
     icon: SiNextdotjs,
-    status: "coming-soon",
+    status: "available",
     description:
       "Full-stack ready. Route handlers, server actions, and middleware components for Next.js App Router backends",
     frameworks: ["nextjs"],

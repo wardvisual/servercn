@@ -43,9 +43,9 @@ export default function ArchitectureTabs({
   }
 
   // If only one architecture available, don't show tabs
-  if (availableArchs.length === 1) {
-    return null;
-  }
+  // if (availableArchs.length === 1) {
+  //   return null;
+  // }
 
   return (
     <div
@@ -56,7 +56,7 @@ export default function ArchitectureTabs({
       <div
         className={cn(
           "bg-background grid gap-3",
-          availableArchs.length === 2 ? "grid-cols-2" : "grid-cols-3"
+          availableArchs.length === 2 ? "grid-cols-2" : "grid-cols-1"
         )}>
         {availableArchs.map(arch => (
           <button
