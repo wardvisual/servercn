@@ -97,7 +97,8 @@
       "type": "component",
       "slug": "jwt-utils",
       "frameworks": [
-        "express"
+        "express",
+        "nextjs"
       ]
     },
     {

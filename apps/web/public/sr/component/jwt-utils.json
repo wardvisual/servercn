@@ -22,12 +22,12 @@
                 {
                   "type": "file",
                   "path": "src/utils/jwt.ts",
-                  "content": "import jwt from \"jsonwebtoken\";\r\nimport env from \"../configs/env\";\r\n\r\nconst ACCESS_TOKEN_EXPIRY = \"15m\";\r\nconst REFRESH_TOKEN_EXPIRY = \"7d\";\r\n\r\nexport function generateAccessToken(user: { _id: string }) {\r\n  return jwt.sign({ _id: user._id }, env.JWT_ACCESS_SECRET!, {\r\n    expiresIn: ACCESS_TOKEN_EXPIRY\r\n  });\r\n}\r\n\r\nexport function generateRefreshToken(userId: string) {\r\n  return jwt.sign({ userId }, env.JWT_REFRESH_SECRET!, {\r\n    expiresIn: REFRESH_TOKEN_EXPIRY\r\n  });\r\n}\r\n\r\nexport function verifyAccessToken(token: string) {\r\n  return jwt.verify(token, env.JWT_ACCESS_SECRET!) as {\r\n    _id: string;\r\n  };\r\n}\r\n\r\nexport function verifyRefreshToken(token: string) {\r\n  return jwt.verify(token, env.JWT_REFRESH_SECRET!) as {\r\n    userId: string;\r\n  };\r\n}\r\n"
+                  "content": "import jwt from \"jsonwebtoken\";\nimport env from \"../configs/env\";\n\nconst ACCESS_TOKEN_EXPIRY = \"15m\";\nconst REFRESH_TOKEN_EXPIRY = \"7d\";\n\nexport function generateAccessToken(user: { _id: string }) {\n  return jwt.sign({ _id: user._id }, env.JWT_ACCESS_SECRET!, {\n    expiresIn: ACCESS_TOKEN_EXPIRY\n  });\n}\n\nexport function generateRefreshToken(userId: string) {\n  return jwt.sign({ userId }, env.JWT_REFRESH_SECRET!, {\n    expiresIn: REFRESH_TOKEN_EXPIRY\n  });\n}\n\nexport function verifyAccessToken(token: string) {\n  return jwt.verify(token, env.JWT_ACCESS_SECRET!) as {\n    _id: string;\n  };\n}\n\nexport function verifyRefreshToken(token: string) {\n  return jwt.verify(token, env.JWT_REFRESH_SECRET!) as {\n    userId: string;\n  };\n}\n"
                 },
                 {
                   "type": "file",
                   "path": "src/configs/env.ts",
-                  "content": "interface Config {\r\n  JWT_REFRESH_SECRET: string;\r\n  JWT_ACCESS_SECRET: string;\r\n}\r\n\r\nconst env: Config = {\r\n  JWT_REFRESH_SECRET: process.env.JWT_ACCESS_SECRET!,\r\n  JWT_ACCESS_SECRET: process.env.JWT_ACCESS_SECRET!\r\n};\r\n\r\nexport default env;\r\n"
+                  "content": "interface Config {\n  JWT_REFRESH_SECRET: string;\n  JWT_ACCESS_SECRET: string;\n}\n\nconst env: Config = {\n  JWT_REFRESH_SECRET: process.env.JWT_ACCESS_SECRET!,\n  JWT_ACCESS_SECRET: process.env.JWT_ACCESS_SECRET!\n};\n\nexport default env;\n"
                 }
               ]
             },
@@ -35,13 +35,63 @@
               "files": [
                 {
                   "type": "file",
-                  "path": "src/shared/helpers/jwt.helpers.ts",
-                  "content": "import jwt from \"jsonwebtoken\";\r\nimport env from \"../configs/env\";\r\n\r\nconst ACCESS_TOKEN_EXPIRY = \"15m\";\r\nconst REFRESH_TOKEN_EXPIRY = \"7d\";\r\n\r\nexport function generateAccessToken(user: { _id: string }) {\r\n  return jwt.sign({ _id: user._id }, env.JWT_ACCESS_SECRET!, {\r\n    expiresIn: ACCESS_TOKEN_EXPIRY\r\n  });\r\n}\r\n\r\nexport function generateRefreshToken(userId: string) {\r\n  return jwt.sign({ userId }, env.JWT_REFRESH_SECRET!, {\r\n    expiresIn: REFRESH_TOKEN_EXPIRY\r\n  });\r\n}\r\n\r\nexport function verifyAccessToken(token: string) {\r\n  return jwt.verify(token, env.JWT_ACCESS_SECRET!) as {\r\n    _id: string;\r\n  };\r\n}\r\n\r\nexport function verifyRefreshToken(token: string) {\r\n  return jwt.verify(token, env.JWT_REFRESH_SECRET!) as {\r\n    userId: string;\r\n  };\r\n}\r\n"
+                  "path": "src/shared/configs/env.ts",
+                  "content": "interface Config {\n  JWT_REFRESH_SECRET: string;\n  JWT_ACCESS_SECRET: string;\n}\n\nconst env: Config = {\n  JWT_REFRESH_SECRET: process.env.JWT_ACCESS_SECRET!,\n  JWT_ACCESS_SECRET: process.env.JWT_ACCESS_SECRET!\n};\n\nexport default env;\n"
                 },
                 {
                   "type": "file",
-                  "path": "src/shared/configs/env.ts",
-                  "content": "interface Config {\r\n  JWT_REFRESH_SECRET: string;\r\n  JWT_ACCESS_SECRET: string;\r\n}\r\n\r\nconst env: Config = {\r\n  JWT_REFRESH_SECRET: process.env.JWT_ACCESS_SECRET!,\r\n  JWT_ACCESS_SECRET: process.env.JWT_ACCESS_SECRET!\r\n};\r\n\r\nexport default env;\r\n"
+                  "path": "src/shared/helpers/jwt.helpers.ts",
+                  "content": "import jwt from \"jsonwebtoken\";\nimport env from \"../configs/env\";\n\nconst ACCESS_TOKEN_EXPIRY = \"15m\";\nconst REFRESH_TOKEN_EXPIRY = \"7d\";\n\nexport function generateAccessToken(user: { _id: string }) {\n  return jwt.sign({ _id: user._id }, env.JWT_ACCESS_SECRET!, {\n    expiresIn: ACCESS_TOKEN_EXPIRY\n  });\n}\n\nexport function generateRefreshToken(userId: string) {\n  return jwt.sign({ userId }, env.JWT_REFRESH_SECRET!, {\n    expiresIn: REFRESH_TOKEN_EXPIRY\n  });\n}\n\nexport function verifyAccessToken(token: string) {\n  return jwt.verify(token, env.JWT_ACCESS_SECRET!) as {\n    _id: string;\n  };\n}\n\nexport function verifyRefreshToken(token: string) {\n  return jwt.verify(token, env.JWT_REFRESH_SECRET!) as {\n    userId: string;\n  };\n}\n"
+                }
+              ]
+            }
+          }
+        },
+        "nextjs": {
+          "dependencies": {
+            "runtime": [
+              "jsonwebtoken"
+            ],
+            "dev": [
+              "@types/jsonwebtoken"
+            ]
+          },
+          "env": [
+            "JWT_ACCESS_SECRET",
+            "JWT_REFRESH_SECRET"
+          ],
+          "architectures": {
+            "file-api": {
+              "files": [
+                {
+                  "type": "file",
+                  "path": "src/lib/jwt/jwt.verify.ts",
+                  "content": "import jwt from \"jsonwebtoken\";\r\nimport {\r\n  AccessTokenPayload,\r\n  JwtPayload,\r\n  RefreshTokenPayload\r\n} from \"./jwt.types\";\r\nimport { JwtExpiredError, JwtInvalidError } from \"./jwt.errors\";\r\n\r\nfunction verifyToken<T extends JwtPayload>(token: string, secret: string): T {\r\n  try {\r\n    return jwt.verify(token, secret) as T;\r\n  } catch (err: any) {\r\n    if (err.name === \"TokenExpiredError\") {\r\n      throw new JwtExpiredError();\r\n    }\r\n    throw new JwtInvalidError();\r\n  }\r\n}\r\n\r\nexport function verifyAccessToken(token: string) {\r\n  return verifyToken(\r\n    token,\r\n    process.env.JWT_ACCESS_SECRET as string\r\n  ) as AccessTokenPayload;\r\n}\r\n\r\nexport function verifyRefreshToken(token: string) {\r\n  return verifyToken(\r\n    token,\r\n    process.env.JWT_REFRESH_SECRET as string\r\n  ) as RefreshTokenPayload;\r\n}\r\n"
+                },
+                {
+                  "type": "file",
+                  "path": "src/lib/jwt/jwt.utils.ts",
+                  "content": "import jwt from \"jsonwebtoken\";\r\n\r\nexport function decodeToken<T = unknown>(token: string): T | null {\r\n  return jwt.decode(token) as T | null;\r\n}\r\n\r\nexport function extractTokenFromHeader(authHeader?: string): string | null {\r\n  if (!authHeader) return null;\r\n\r\n  const parts = authHeader.split(\" \");\r\n  if (parts.length !== 2 || parts[0] !== \"Bearer\") {\r\n    return null;\r\n  }\r\n\r\n  return parts[1];\r\n}\r\n"
+                },
+                {
+                  "type": "file",
+                  "path": "src/lib/jwt/jwt.types.ts",
+                  "content": "export enum JwtType {\r\n  ACCESS = \"access\",\r\n  REFRESH = \"refresh\"\r\n}\r\n\r\nexport type JwtPayloadBase = {\r\n  sub: string;\r\n  iat?: number;\r\n  exp?: number;\r\n};\r\n\r\nexport type AccessTokenPayload = JwtPayloadBase & {\r\n  type: JwtType.ACCESS;\r\n  email: string;\r\n  sid: string;\r\n};\r\n\r\nexport type RefreshTokenPayload = JwtPayloadBase & {\r\n  type: JwtType.REFRESH;\r\n  sid: string;\r\n};\r\n\r\nexport type JwtPayload = AccessTokenPayload | RefreshTokenPayload;\r\n"
+                },
+                {
+                  "type": "file",
+                  "path": "src/lib/jwt/jwt.sign.ts",
+                  "content": "import jwt from \"jsonwebtoken\";\r\nimport { AccessTokenPayload, JwtType, RefreshTokenPayload } from \"./jwt.types\";\r\n\r\nexport function signAccessToken(payload: {\r\n  sub: string;\r\n  email: string;\r\n  sid: string;\r\n}): string {\r\n  const tokenPayload: AccessTokenPayload = {\r\n    sub: payload.sub,\r\n    type: JwtType.ACCESS,\r\n    email: payload.email,\r\n    sid: payload.sid\r\n  };\r\n\r\n  return jwt.sign(tokenPayload, process.env.JWT_ACCESS_SECRET as string, {\r\n    expiresIn: \"15m\"\r\n  });\r\n}\r\n\r\nexport function signRefreshToken(payload: {\r\n  sub: string;\r\n  sid: string;\r\n}): string {\r\n  const tokenPayload: RefreshTokenPayload = {\r\n    sub: payload.sub,\r\n    type: JwtType.REFRESH,\r\n    sid: payload.sid\r\n  };\r\n\r\n  return jwt.sign(tokenPayload, process.env.JWT_REFRESH_SECRET as string, {\r\n    expiresIn: \"7d\"\r\n  });\r\n}\r\n"
+                },
+                {
+                  "type": "file",
+                  "path": "src/lib/jwt/jwt.errors.ts",
+                  "content": ""
+                },
+                {
+                  "type": "file",
+                  "path": "src/lib/jwt/index.ts",
+                  "content": "export * from \"./jwt.types\";\r\nexport * from \"./jwt.sign\";\r\nexport * from \"./jwt.verify\";\r\nexport * from \"./jwt.utils\";\r\nexport * from \"./jwt.errors\";\r\n"
                 }
               ]
             }
