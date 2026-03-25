@@ -14,6 +14,16 @@
             "dev": ["@types/jsonwebtoken"]
           },
           "env": ["JWT_ACCESS_SECRET", "JWT_REFRESH_SECRET"]
+        },
+        "nextjs": {
+          "templates": {
+            "file-api": "jwt-utils/file-api"
+          },
+          "dependencies": {
+            "runtime": ["jsonwebtoken"],
+            "dev": ["@types/jsonwebtoken"]
+          },
+          "env": ["JWT_ACCESS_SECRET", "JWT_REFRESH_SECRET"]
         }
       }
     }

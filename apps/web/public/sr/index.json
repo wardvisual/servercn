@@ -97,14 +97,16 @@
       "type": "component",
       "slug": "jwt-utils",
       "frameworks": [
-        "express"
+        "express",
+        "nextjs"
       ]
     },
     {
       "type": "component",
       "slug": "http-status-codes",
       "frameworks": [
-        "express"
+        "express",
+        "nextjs"
       ]
     },
     {
@@ -144,9 +146,10 @@
     },
     {
       "type": "component",
-      "slug": "env",
+      "slug": "env-config",
       "frameworks": [
-        "express"
+        "express",
+        "nextjs"
       ]
     },
     {

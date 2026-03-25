@@ -82,7 +82,7 @@
       "description": "JWT Utilities for JSON Web Token authentication with access & refresh token support for Express",
       "type": "component",
       "status": "stable",
-      "frameworks": ["express"],
+      "frameworks": ["express", "nextjs"],
       "docs": "/docs/components/jwt-utils"
     },
     {
@@ -139,7 +139,7 @@
       "description": "Centralized, type-safe HTTP status codes for consistent API responses.",
       "type": "component",
       "status": "stable",
-      "frameworks": ["express"],
+      "frameworks": ["express", "nextjs"],
       "docs": "/docs/components/http-status-codes"
     },
     {
@@ -290,13 +290,13 @@
       }
     },
     {
-      "slug": "env",
+      "slug": "env-config",
       "title": "Env Configuration",
       "description": "A type-safe environment variable configuration using Zod and Dotenv for Express applications.",
       "type": "component",
       "status": "stable",
-      "frameworks": ["express"],
-      "docs": "/docs/components/env"
+      "frameworks": ["express", "nextjs"],
+      "docs": "/docs/components/env-config"
     },
     {
       "slug": "swagger-docs",
