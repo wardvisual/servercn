@@ -38,7 +38,11 @@
             "GITHUB_REDIRECT_URI"
           ]
         },
-        ""
+        "nextjs": {
+          "templates": {
+            "file-api": "env-config/file-api"
+          }
+        }
       }
     }
   }
