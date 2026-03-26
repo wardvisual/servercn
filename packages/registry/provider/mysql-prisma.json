@@ -1,0 +1,21 @@
+{
+  "$schema": "https://servercn.vercel.app/schema/foundation.registry.json",
+  "slug": "mysql-prisma",
+  "runtimes": {
+    "node": {
+      "frameworks": {
+        "express": {
+          "templates": {
+            "mvc": "mysql-prisma/mvc",
+            "feature": "mysql-prisma/feature"
+          },
+          "dependencies": {
+            "runtime": ["@prisma/client@6"],
+            "dev": ["prisma@6"]
+          },
+          "env": ["DATABASE_URL"]
+        }
+      }
+    }
+  }
+}

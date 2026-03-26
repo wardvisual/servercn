@@ -23,7 +23,9 @@ export async function processRegistryItem(item: any, type: RegistryType) {
     case "blueprint":
       return await buildBlueprint(item as RegistryBlueprint);
     case "foundation":
-      return await buildFoundation(item as RegistryFoundation);
+      return await buildFoundation(item as RegistryFoundation, "foundation");
+    case "provider":
+      return await buildFoundation(item as RegistryFoundation, "provider");
     case "schema":
       return await buildSchema(item as RegistrySchema);
     case "tooling":
@@ -76,7 +78,10 @@ async function buildComponent(component: RegistryComponent) {
   return built;
 }
 
-async function buildFoundation(foundation: RegistryFoundation) {
+async function buildFoundation(
+  foundation: RegistryFoundation,
+  type: "foundation" | "provider"
+) {
   const built: any = { ...foundation, runtimes: {} };
   delete built["$schema"];
   for (const [runtimeKey, runtime] of Object.entries(foundation.runtimes)) {
@@ -89,7 +94,7 @@ async function buildFoundation(foundation: RegistryFoundation) {
           ...framework,
           architectures: await processArchitectureSet(
             framework?.templates,
-            path.join(runtimeKey, frameworkKey, "foundation")
+            path.join(runtimeKey, frameworkKey, type)
           )
         };
         delete (built.runtimes[runtimeKey].frameworks[frameworkKey] as any)
