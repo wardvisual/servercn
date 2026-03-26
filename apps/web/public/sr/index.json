@@ -301,6 +301,48 @@
     {
       "type": "tooling",
       "slug": "commitlint"
+    },
+    {
+      "type": "provider",
+      "slug": "pg-prisma",
+      "frameworks": [
+        "express"
+      ]
+    },
+    {
+      "type": "provider",
+      "slug": "pg-drizzle",
+      "frameworks": [
+        "express"
+      ]
+    },
+    {
+      "type": "provider",
+      "slug": "mysql-prisma",
+      "frameworks": [
+        "express"
+      ]
+    },
+    {
+      "type": "provider",
+      "slug": "mysql-drizzle",
+      "frameworks": [
+        "express"
+      ]
+    },
+    {
+      "type": "provider",
+      "slug": "mongodb-prisma",
+      "frameworks": [
+        "express"
+      ]
+    },
+    {
+      "type": "provider",
+      "slug": "mongodb-mongoose",
+      "frameworks": [
+        "express"
+      ]
     }
   ]
 }
