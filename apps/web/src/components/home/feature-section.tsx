@@ -132,6 +132,7 @@ export function FeatureCard({ item }: { item: IFeature }) {
         "hover:bg-card-hover relative p-4 duration-300",
         "border-edge last:border-r",
         "screen-line-before",
+        "dark:bg-[radial-gradient(35%_128px_at_0%_0%,--theme(--color-foreground/.08),transparent),radial-gradient(35%_128px_at_100%_0%,--theme(--color-foreground/.08),transparent)]",
         item.className
       )}>
       <div className="relative">

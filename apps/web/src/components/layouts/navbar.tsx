@@ -41,39 +41,42 @@ export default function Navbar() {
           className={cn(
             "mx-auto flex max-w-360 items-center justify-between px-4 py-2.5",
             "border-edge border-x",
-            "screen-line-before screen-line-after"
+            "screen-line-before screen-line-after",
+            "dark:bg-[radial-gradient(35%_128px_at_50%_0%,--theme(--color-foreground/.08),transparent)]"
           )}>
-          <Logo />
+          <div className="flex items-center gap-4">
+            <Logo />
 
-          <ul className="hidden items-center gap-4 lg:flex">
-            {links.map(link => {
-              const active = isActiveLink(path, link.href);
-              return (
-                <li key={link.href} className="relative">
-                  <Link
-                    href={link.href as Route}
-                    className={cn(
-                      "text-muted-foreground hover:text-foreground font-medium transition-colors",
-                      active && "text-foreground"
-                    )}>
-                    {link.label}
-                  </Link>
+            <ul className="hidden items-center gap-4 lg:flex">
+              {links.map(link => {
+                const active = isActiveLink(path, link.href);
+                return (
+                  <li key={link.href} className="relative">
+                    <Link
+                      href={link.href as Route}
+                      className={cn(
+                        "text-muted-foreground hover:text-foreground transition-colors",
+                        active && "text-foreground"
+                      )}>
+                      {link.label}
+                    </Link>
 
-                  {active && (
-                    <motion.span
-                      layoutId="nav-underline"
-                      className="bg-foreground absolute -bottom-1 left-0 h-px w-full"
-                      transition={{
-                        type: "spring",
-                        stiffness: 300,
-                        damping: 30
-                      }}
-                    />
-                  )}
-                </li>
-              );
-            })}
-          </ul>
+                    {active && (
+                      <motion.span
+                        layoutId="nav-underline"
+                        className="bg-foreground absolute -bottom-1 left-0 h-px w-full"
+                        transition={{
+                          type: "spring",
+                          stiffness: 300,
+                          damping: 30
+                        }}
+                      />
+                    )}
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
 
           <div className="flex items-center gap-3">
             <SearchCommand />

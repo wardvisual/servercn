@@ -1,8 +1,11 @@
-npx lint-staged
+#!/bin/sh
 
 branch=$(git rev-parse --abbrev-ref HEAD)
 
-if [ "$branch" = "main" ]; then
-  echo "❌ Direct commits to main are not allowed."
+if [ "$branch" = "main" ] || [ "$branch" = "master" ]; then
+  echo "❌ Direct commits to $branch are not allowed."
   exit 1
 fi
+
+echo "🔍 Running lint-staged..."
+npx lint-staged

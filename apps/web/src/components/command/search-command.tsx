@@ -16,7 +16,7 @@ import { Kbd } from "@/components/ui/kbd";
 
 import Link from "next/link";
 import { Route } from "next";
-import { CircleIcon } from "lucide-react";
+import { CircleIcon, SearchIcon } from "lucide-react";
 import { getRegistryTypeItems, injectFramework } from "@/lib/source";
 import { cn } from "@/lib/utils";
 import { ITEM_GROUP_NAMING, PAGE_ITEMS } from "../layouts/docs-sidebar";
@@ -60,6 +60,7 @@ export function SearchCommand({
   const blueprints = getRegistryTypeItems("blueprint", framework);
   const schemas = getRegistryTypeItems("schema", framework);
   const toolings = getRegistryTypeItems("tooling");
+  const providers = getRegistryTypeItems("provider", framework);
 
   return (
     <>
@@ -75,8 +76,9 @@ export function SearchCommand({
             "hidden items-center px-0 md:flex md:gap-2",
             size === "lg" ? "block" : "hidden"
           )}>
+          <SearchIcon className="text-muted-foreground size-4 group-hover:text-accent-foreground" />
           <span className="group-hover:text-accent-foreground text-muted-foreground font-normal duration-300">
-            Search docs...
+            Search
           </span>
         </div>
 
@@ -226,6 +228,24 @@ export function SearchCommand({
               ))}
             </CommandGroup>
           )}
+
+          {providers.length > 0 && (
+            <CommandGroup heading={ITEM_GROUP_NAMING.provider.toUpperCase()}>
+              {providers.map(item => (
+                <CommandItem asChild key={item.title}>
+                  <Link
+                    href={
+                      injectFramework(item.url as string, framework) as Route
+                    }
+                    className="cursor-pointer pl-4 capitalize">
+                    <CircleIcon className="text-muted-secondary mb-1 size-2.5" />
+                    {item.title}
+                  </Link>
+                </CommandItem>
+              ))}
+            </CommandGroup>
+          )}
+
           {schemas.length > 0 && (
             <CommandGroup heading={ITEM_GROUP_NAMING.schema.toUpperCase()}>
               {schemas.map(item => (

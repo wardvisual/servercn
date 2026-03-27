@@ -19,7 +19,7 @@ export default function InitCopyButton() {
   return (
     <div
       onClick={handleCopy}
-      className="group bg-background relative flex w-70 cursor-pointer items-center gap-3 rounded-md px-3 py-1 text-center font-mono sm:gap-5">
+      className="group bg-background relative flex w-72 cursor-pointer items-center gap-3 rounded-md px-3 py-1 text-center font-mono sm:gap-3">
       <div className="text-primary">
         <span
           className={cn(
@@ -42,7 +42,7 @@ export default function InitCopyButton() {
       <CopyButton
         handleCopy={handleCopy}
         copied={copied}
-        className="group-hover:text-accent-foreground"
+        className="group-hover:text-accent-foreground bottom-[-2px] relative"
       />
     </div>
   );

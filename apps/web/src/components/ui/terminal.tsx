@@ -190,12 +190,13 @@ export function Terminal({
     <div
       ref={containerRef}
       className={cn(
-        "mx-auto w-full px-4 font-mono text-sm sm:text-base",
+        "mx-auto w-full font-mono text-sm sm:text-base",
+        "bg-[radial-gradient(35%_128px_at_100%_0%,--theme(--color-foreground/.05),transparent)] dark:bg-[radial-gradient(35%_128px_at_100%_0%,--theme(--color-foreground/.08),transparent),radial-gradient(35%_128px_at_0%_100%,--theme(--color-foreground/.08),transparent)]",
         className
       )}>
-      <div className="border-edge bg-background overflow-hidden rounded-lg border">
+      <div className="border-edge overflow-hidden rounded-lg border px-4">
         {/* Title Bar */}
-        <div className="flex items-center justify-between gap-2 px-4 py-3">
+        <div className="flex items-center justify-between gap-2 py-3">
           <div className="flex items-center gap-1.5">
             <div className="h-3 w-3 rounded-full bg-red-500 transition-colors hover:bg-red-600" />
             <div className="h-3 w-3 rounded-full bg-yellow-500 transition-colors hover:bg-yellow-600" />
@@ -224,7 +225,7 @@ export function Terminal({
         <div
           ref={contentRef}
           className={cn(
-            "no-visible-scrollbar min-h-60 overflow-y-auto p-4 font-mono",
+            "no-visible-scrollbar min-h-60 overflow-y-auto py-3 font-mono",
             containerClassName
           )}>
           {lines.map((line, i) => (

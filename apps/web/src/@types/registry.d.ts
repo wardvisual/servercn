@@ -37,7 +37,8 @@ export type ItemType =
   | "schema"
   | "foundation"
   | "tooling"
-  | "contributing";
+  | "contributing"
+  | "provider";
 
 export type RegistryFile = {
   type: string;

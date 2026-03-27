@@ -2,7 +2,6 @@
 import { cn } from "@/lib/utils";
 import { Terminal } from "@/components/ui/terminal";
 
-
 export default function InstallComponentCommands({
   className
 }: {
@@ -12,7 +11,7 @@ export default function InstallComponentCommands({
     <div className={cn("h-full", className)}>
       <Terminal
         command="npx servercn-cli add oauth"
-        containerClassName="min-h-140"
+        containerClassName={cn("min-h-140")}
         commands={[
           "npx servercn-cli add oauth",
           "? Select OAuth provider:\n> Google\n  GitHub"
