@@ -2,6 +2,7 @@ import { AuthService, CookieOptionsType } from "./auth.service";
 import db from "../configs/db";
 import { users } from "../drizzle/schemas/user.schema";
 import { eq } from "drizzle-orm";
+import { ApiError } from "../utils/api-error";
 
 type OAuthProfile = {
   provider: "local" | "google" | "github";
@@ -28,10 +29,21 @@ export class OAuthService {
     });
 
     if (existingUser) {
+      if (!user.isEmailVerified) {
+        throw ApiError.forbidden("Email not verified - require linking flow.");
+      }
+
+      const canAutoLinkProvider =
+        user.isEmailVerified || existingUser.provider === user.provider;
+
+      if (!canAutoLinkProvider) {
+        throw ApiError.forbidden("Email not verified - require linking flow.");
+      }
+
       const [updatedUser] = await db.update(users).set({
         provider: user.provider,
         providerId: user.providerId,
-        isEmailVerified: user.isEmailVerified,
+        isEmailVerified: existingUser.isEmailVerified || user.isEmailVerified,
         avatar: user.avatar ? { url: user.avatar } : null
       }).where(eq(users.id, existingUser.id)).returning();
 

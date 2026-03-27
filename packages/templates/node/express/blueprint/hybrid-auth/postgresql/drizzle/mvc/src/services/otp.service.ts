@@ -93,7 +93,7 @@ export class OtpService {
     try {
       const newOtp = generateOTP(OTP_CODE_LENGTH);
 
-      logger.info(`OTP generated successfully: ${code ? code : newOtp.code}`);
+      logger.info({ email }, "OTP generated successfully");
 
       await sendEmail({
         email,
@@ -139,7 +139,13 @@ export class OtpService {
     );
 
     if (hashOtpCodeKey !== hashCode) {
-      if (failedAttempts >= OTP_MAX_ATTEMPTS) {
+      const newFailed = failedAttempts + 1;
+
+      await redis.set(failedAttemptsKey, newFailed, {
+        EX: OTP_EXPIRES_IN / 1000
+      });
+
+      if (newFailed >= OTP_MAX_ATTEMPTS) {
         await redis.set(`otp_lock:${email}`, "locked", {
           EX: OTP_SPAM_LOCK_TIME / 1000
         });
@@ -147,11 +153,8 @@ export class OtpService {
           "Too many failed attempts. Please try again after 1 hour."
         );
       }
-      await redis.set(failedAttemptsKey, failedAttempts + 1, {
-        EX: OTP_EXPIRES_IN / 1000
-      });
       throw ApiError.badRequest(
-        `Incorrect OTP. ${OTP_MAX_ATTEMPTS - failedAttempts} attempts left.`
+        `Incorrect OTP. ${OTP_MAX_ATTEMPTS - newFailed} attempts left.`
       );
     }
 
