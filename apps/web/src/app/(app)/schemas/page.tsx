@@ -38,8 +38,8 @@ export const generateMetadata = (): Metadata => {
 const schemas = getRegistryTypeItems("schema", "express");
 export default function SchemaPage() {
   return (
-    <Container className="border-edge border-x px-0 pt-18">
-      <div className="mb-6 px-4">
+    <Container className="border-edge border-x px-0 pt-16">
+      <div className="dark:bg-[radial-gradient(35%_128px_at_0%_0%,--theme(--color-foreground/.08),transparent),radial-gradient(35%_128px_at_100%_0%,--theme(--color-foreground/.08),transparent)] mb-6 px-4 pt-2">
         <Heading className="tracking-tight capitalize">
           {APP_NAME} Schemas
         </Heading>
@@ -70,7 +70,8 @@ export function ItemWithDBCard({ item }: { item: IRegistryItems }) {
     <div
       className={cn(
         "hover:bg-card-hover screen-line-before border-edge flex flex-col gap-2 p-4 duration-300 last:border-r",
-        item.status !== "stable" && "pointer-events-none"
+        item.status !== "stable" && "pointer-events-none",
+        "dark:bg-[radial-gradient(35%_128px_at_0%_0%,--theme(--color-foreground/.08),transparent),radial-gradient(35%_128px_at_100%_0%,--theme(--color-foreground/.08),transparent)]"
       )}>
       <Link
         href={(item.status === "stable" ? item.url : "") as Route}
