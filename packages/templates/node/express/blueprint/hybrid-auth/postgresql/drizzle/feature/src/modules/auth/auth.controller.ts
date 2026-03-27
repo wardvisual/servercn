@@ -24,7 +24,7 @@ type AvatarData = { public_id: string; url: string; size: number };
 //? SIGNUP USER
 export const signupUser = AsyncHandler(
   async (req: Request, res: Response, next: NextFunction) => {
-    const { name, email, password, role } = req.body;
+    const { name, email, password } = req.body;
     if (!name || !email || !password) {
       return next(ApiError.badRequest("Name, email and password are required"));
     }
@@ -32,8 +32,7 @@ export const signupUser = AsyncHandler(
     await AuthService.registerUser({
       name,
       email,
-      password,
-      role
+      password
     });
 
     return ApiResponse.Success(

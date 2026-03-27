@@ -48,7 +48,8 @@ export type CookieOptionsType = {
 export class AuthService {
   static async registerUser(user: Omit<SignupUserType, "confirmPassword">) {
     try {
-      const { name, email, password, role } = user;
+      const { name, email, password } = user;
+      const enforcedRole = "user" as const;
       const existingUser = await db.query.users.findFirst({
         where: eq(users.email, email)
       });
@@ -83,7 +84,7 @@ export class AuthService {
       const userData = JSON.stringify({
         name,
         email,
-        role,
+        role: enforcedRole,
         password: hashedPassword
       });
 
@@ -123,11 +124,16 @@ export class AuthService {
     }
 
     const { name, email: userEmail, role, password } = JSON.parse(userData);
+    const enforcedRole = "user" as const;
+
+    if (role && role !== enforcedRole) {
+      throw ApiError.forbidden("Invalid signup role");
+    }
 
     const [user] = await db.insert(users).values({
       name,
       email: userEmail,
-      role,
+      role: enforcedRole,
       password,
       isEmailVerified: true
     }).returning();
@@ -139,7 +145,7 @@ export class AuthService {
       _id: user.id,
       name,
       email,
-      role: role,
+      role: enforcedRole,
       isEmailVerified: true
     };
   }

@@ -27,7 +27,7 @@ export const emailSchema = z
 
 export const roleSchema = z
   .enum(["user", "admin"], {
-    error: "Role must be either applicant, recruiter, or admin"
+    error: "Role must be either user or admin"
   })
   .default("user");
 
@@ -43,8 +43,7 @@ export const SignupSchema = z
     name: nameSchema,
     email: emailSchema,
     password: passwordSchema,
-    confirmPassword: passwordSchema,
-    role: roleSchema
+    confirmPassword: passwordSchema
   })
   .refine(
     data => {

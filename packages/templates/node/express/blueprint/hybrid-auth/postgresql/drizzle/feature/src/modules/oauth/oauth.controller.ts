@@ -15,16 +15,25 @@ export const githubOAuth = AsyncHandler(
     const data = req.user as GithubProfile | undefined;
 
     if (!data) {
-      return next(ApiError.unauthorized("Authenticated failed!"));
+      return next(ApiError.unauthorized("Authentication failed"));
+    }
+
+    const email = data?.emails?.[0]?.value;
+
+    if (!email?.trim()) {
+      return next(ApiError.badRequest("Email is required for OAuth login"));
     }
 
     const user = {
       provider: data?.provider as "local" | "google" | "github" | "facebook",
       providerId: data.id,
       name: data.displayName,
-      email: data?.emails && data?.emails[0]?.value,
-      isEmailVerified: true,
-      avatar: data.photos && data.photos[0].value,
+      email,
+      isEmailVerified: false,
+      avatar:
+        data.photos && data.photos.length > 0
+          ? data.photos[0]?.value
+          : undefined,
       ip: req.ip || "Unknown",
       userAgent: req.get("user-agent") || req.headers["user-agent"] || "Unknown"
     };
@@ -41,7 +50,7 @@ export const githubOAuth = AsyncHandler(
 
     //? save the data into your databases
 
-    ApiResponse.ok(res, "Signin Successfull", {
+    ApiResponse.ok(res, "Sign in successful", {
       user: {
         id: existingUser.id,
         name: existingUser.name,
@@ -62,17 +71,26 @@ export const googleOAuth = AsyncHandler(
     const data = req.user as GoogleProfile | undefined;
 
     if (!data) {
-      return next(ApiError.unauthorized("Authenticated failed!"));
+      return next(ApiError.unauthorized("Authentication failed"));
+    }
+
+    const email = data?.emails?.[0]?.value;
+
+    if (!email?.trim()) {
+      return next(ApiError.badRequest("Email is required for OAuth login"));
     }
 
     const userInfo = {
       provider: data?.provider as "local" | "google" | "github" | "facebook",
       providerId: data.id,
       name: data.displayName,
-      email: data?.emails && data?.emails[0]?.value,
-      isEmailVerified:
-        (data?.emails && data?.emails[0]?.verified === true) || true,
-      avatar: data.profileUrl || (data.photos && data.photos[0].value),
+      email,
+      isEmailVerified: data?.emails?.[0]?.verified === true,
+      avatar:
+        data.profileUrl ||
+        (data.photos && data.photos.length > 0
+          ? data.photos[0]?.value
+          : undefined),
       ip: req.ip || "Unknown",
       userAgent: req.get("user-agent") || req.headers["user-agent"] || "Unknown"
     };
@@ -87,7 +105,7 @@ export const googleOAuth = AsyncHandler(
       }
     });
 
-    ApiResponse.ok(res, "Signin Successfull", {
+    ApiResponse.ok(res, "Sign in successful", {
       user: {
         id: existingUser.id,
         name: existingUser.name,
@@ -108,16 +126,26 @@ export const facebookOAuth = AsyncHandler(
     const data = req.user as FacebookProfile | undefined;
 
     if (!data) {
-      return next(ApiError.unauthorized("Authenticated failed!"));
+      return next(ApiError.unauthorized("Authentication failed"));
+    }
+
+    const email = data?.emails?.[0]?.value;
+
+    if (!email?.trim()) {
+      return next(ApiError.badRequest("Email is required for OAuth login"));
     }
 
     const userInfo = {
       provider: data?.provider as "local" | "google" | "github" | "facebook",
       providerId: data.id,
       name: data.displayName,
-      email: data?.emails && data?.emails[0]?.value,
-      isEmailVerified: true,
-      avatar: data.profileUrl || (data.photos && data.photos[0].value),
+      email,
+      isEmailVerified: false,
+      avatar:
+        data.profileUrl ||
+        (data.photos && data.photos.length > 0
+          ? data.photos[0]?.value
+          : undefined),
       ip: req.ip || "Unknown",
       userAgent: req.get("user-agent") || req.headers["user-agent"] || "Unknown"
     };
@@ -132,7 +160,7 @@ export const facebookOAuth = AsyncHandler(
       }
     });
 
-    ApiResponse.ok(res, "Signin Successfull", {
+    ApiResponse.ok(res, "Sign in successful", {
       user: {
         id: existingUser.id,
         name: existingUser.name,
