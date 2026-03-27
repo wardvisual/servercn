@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { TerminalIcon } from "lucide-react";
 import { Section } from "@/components/ui/section";
 import { Terminal } from "@/components/ui/terminal";
+import { cn } from "@/lib/utils";
 export default function CallToAction() {
   return (
     <Section
@@ -36,16 +37,17 @@ export default function CallToAction() {
 
       <Terminal
         command="npx servercn-cli init"
-        containerClassName="min-h-60"
+        containerClassName={cn("min-h-68 h-full")}
         commands={["npx servercn-cli init"]}
         outputs={{
           0: [
             "Select a project foundation:",
             "> Express Starter",
             "  Express + Mongoose",
-            "  Express + MySQL (Drizzle)",
-            "  Express + PostgreSQL (Drizzle)",
-            "  Express + PostgreSQL (Drizzle)",
+            "  Express + Mongodb(Prisma)",
+            "  Express + MySQL(Drizzle)",
+            "  Express + PostgreSQL(Drizzle)",
+            "  Nextjs Starter",
             "  Existing Project"
           ]
         }}

@@ -13,7 +13,7 @@ import DemoVideo from "./demo";
 
 export default function HeroSection() {
   return (
-    <section id="hero" className="relative mt-4 overflow-hidden sm:mt-12">
+    <section id="hero" className={cn("relative mt-4 overflow-hidden sm:mt-12")}>
       <div className="relative pt-18 pb-20 sm:px-4 md:pt-22 md:pb-28">
         <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
           <div className="sm:max-w-1/2">
@@ -94,7 +94,6 @@ export default function HeroSection() {
               </AnimatedGroup>
             </div>
           </div>
-
           <div className="overflow-hidden rounded-md border">
             <DemoVideo src="/demo.mp4" />
           </div>

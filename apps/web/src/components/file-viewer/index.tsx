@@ -42,7 +42,7 @@ export default function ComponentFileViewer({
   database,
   variant,
   template,
-  orm,
+  orm
 }: Props) {
   const [tree, setTree] = React.useState<FileNode[]>([]);
   const [activeFile, setActiveFile] = React.useState<string>();
@@ -123,7 +123,6 @@ export default function ComponentFileViewer({
       console.error("Failed to copy file content:", error);
     }
   }
-
 
   if (loading) return <div className="p-4">Loading files...</div>;
   if (error) return <div className="p-4 text-red-500">{error}</div>;

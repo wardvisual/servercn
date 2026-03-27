@@ -14,17 +14,22 @@ const STATISTICS: Stat[] = [
   },
   {
     title: "Foundations",
-    value: 4,
+    value: 6,
     suffix: "+"
   },
   {
     title: "Schemas",
-    value: 3,
+    value: 4,
     suffix: "+"
   },
   {
     title: "Blueprints",
-    value: 2,
+    value: 4,
+    suffix: "+"
+  },
+  {
+    title: "Providers",
+    value: 6,
     suffix: "+"
   }
 ];

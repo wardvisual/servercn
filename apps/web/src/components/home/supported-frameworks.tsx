@@ -107,7 +107,8 @@ export default function SupportedFrameworks() {
                 className={cn(
                   "hover:bg-card-hover relative p-4 duration-300",
                   "border-edge last:border-r",
-                  "screen-line-before"
+                  "screen-line-before",
+                  "dark:bg-[radial-gradient(35%_128px_at_0%_0%,--theme(--color-foreground/.08),transparent),radial-gradient(35%_128px_at_100%_0%,--theme(--color-foreground/.08),transparent)]"
                 )}>
                 <div>
                   <div className="flex items-center justify-between">

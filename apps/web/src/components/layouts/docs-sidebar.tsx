@@ -18,6 +18,7 @@ export const ITEM_GROUP_NAMING = {
   tooling: "Tooling",
   component: "Components",
   blueprint: "Blueprints",
+  provider: "Providers",
   schema: "Schemas",
   page: "Pages",
   contributing: "Contributing"
@@ -35,6 +36,10 @@ export const PAGE_ITEMS = [
   {
     title: "Blueprints",
     url: "/blueprints"
+  },
+  {
+    title: "Providers",
+    url: "/providers"
   },
   {
     title: "Schemas",
@@ -81,6 +86,10 @@ export default function DocsSidebar({
       items: getRegistryTypeItems("blueprint", framework)
     },
     {
+      title: ITEM_GROUP_NAMING.provider,
+      items: getRegistryTypeItems("provider", framework)
+    },
+    {
       title: ITEM_GROUP_NAMING.schema,
       items: getRegistryTypeItems("schema", framework)
     },
@@ -103,7 +112,7 @@ export default function DocsSidebar({
         if (section.items.length === 0) return null;
         return (
           <div key={section.title}>
-            <h3 className="text-muted-foreground pb-4 text-xs font-medium tracking-wider uppercase">
+            <h3 className="text-muted-foreground pb-4 text-sm font-medium tracking-wider uppercase">
               {section.title}
             </h3>
 
@@ -111,7 +120,10 @@ export default function DocsSidebar({
               {(section.items as IRegistryItems[])
                 // .filter(item => item.status === "stable")
                 .map((item, i: number) => {
-                  const itemUrl = injectFramework(item.url as string, framework);
+                  const itemUrl = injectFramework(
+                    item.url as string,
+                    framework
+                  );
                   // Check if current pathname matches the item (with or without framework)
                   const isActive =
                     pathname === itemUrl ||
