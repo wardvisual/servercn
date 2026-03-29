@@ -17,8 +17,6 @@ import {
   Framework as FrameworkType
 } from "@/store/use-framework";
 import { useEffect } from "react";
-import { Framework } from "@/@types/registry";
-
 const FRAMEWORK_SECTIONS = [
   "blueprints",
   "components",
@@ -26,7 +24,13 @@ const FRAMEWORK_SECTIONS = [
   "schemas"
 ];
 
-export function SelectFramework() {
+type SelectFrameworkMode = "docs" | "store-only";
+
+export function SelectFramework({
+  mode = "docs"
+}: {
+  mode?: SelectFrameworkMode;
+}) {
   const router = useRouter();
   const pathname = usePathname();
   const { framework, setFramework } = useFramework();
@@ -40,20 +44,22 @@ export function SelectFramework() {
       ? (segments[1] as FrameworkType)
       : null;
 
-  // Sync URL framework with store on mount and URL change
+  // Sync URL framework with store on mount and URL change (docs routes only)
   useEffect(() => {
+    if (mode !== "docs") return;
     if (currentFrameworkFromUrl && currentFrameworkFromUrl !== framework) {
       setFramework(currentFrameworkFromUrl);
     }
-  }, [currentFrameworkFromUrl, framework, setFramework]);
+  }, [mode, currentFrameworkFromUrl, framework, setFramework]);
 
   // Determine the value to display in the select
   // Priority: URL framework > Stored framework > "express" (default)
   const displayValue = currentFrameworkFromUrl || framework || "express";
 
   const handleChange = (value: FrameworkType) => {
-    // Update the store
     setFramework(value);
+
+    if (mode === "store-only") return;
 
     const currentSegments = pathname.split("/").filter(Boolean);
 
