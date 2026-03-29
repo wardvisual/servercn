@@ -1,6 +1,9 @@
-tests
-node_modules
+tests
+node_modules
+dist
+build
+TESTING.md
+config.bat
+temp_auto_push.bat
+temp_interactive_push.bat
 .env
-dist
-build
-TESTING.md
