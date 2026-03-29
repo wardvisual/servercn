@@ -8,8 +8,6 @@ import Navbar from "@/components/layouts/navbar";
 import { SERVERCN_URL } from "@/lib/constants";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Footer from "@/components/layouts/footer";
-import Script from "next/script";
-import Analytics from "@/components/home/analytics";
 
 export const metadata: Metadata = {
   title: siteConfig.title,
@@ -56,24 +54,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning className={fontVariables}>
-      <Script
-        src="https://www.googletagmanager.com/gtag/js?id=G-E2NXRTBQ38"
-        strategy="afterInteractive"
-      />
-      <Script id="google-analytics" strategy="afterInteractive">
-        {`
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-E2NXRTBQ38');
-      `}
-      </Script>
       <body
         className={`selection:bg-primary selection:text-primary-foreground scroll-pt-10 scroll-smooth antialiased`}>
         <ThemeProvider attribute="class" defaultTheme="dark">
           <TooltipProvider>
             <Navbar />
-            <Analytics />
             {children}
             <Footer />
             <ScrollToTopButton />
