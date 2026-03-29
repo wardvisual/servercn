@@ -13,6 +13,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { getIconForLanguageExtension } from "./icons/language-icons";
 import { Table, THead, TBody, TR, TH, TD } from "./table";
 import { Method, Endpoint, Auth } from "./api-table";
+import { JSGuideVideo } from "@/components/home/js-guide-video";
 
 export const mdxComponents: MDXComponents = {
   pre: Pre,
@@ -23,6 +24,7 @@ export const mdxComponents: MDXComponents = {
   Note,
   LNote,
   Warning,
+  JSGuideVideo,
 
   Table,
   THead,

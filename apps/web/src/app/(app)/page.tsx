@@ -7,6 +7,8 @@ import JSGuideCTA from "@/components/home/js-guide-cta";
 import Stats from "@/components/home/stats";
 import SupportedFrameworks from "@/components/home/supported-frameworks";
 import { cn } from "@/lib/utils";
+import NextjsStarterSection from "@/components/home/nextjs-starter";
+import HybridAuthSection from "@/components/home/hybrid-auth";
 
 export default function Home() {
   return (
@@ -18,9 +20,12 @@ export default function Home() {
       <HeroSection />
       <Stats />
       <JSGuideCTA />
+      <NextjsStarterSection />
+
       <SupportedFrameworks />
       <OAuthSection />
       <WhyServercn />
+      <HybridAuthSection />
       <CallToAction />
     </main>
   );
