@@ -14,6 +14,8 @@ import { MenuIcon, X } from "lucide-react";
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { GITHUB_URL } from "@/lib/constants";
+import { GitHubStars } from "../github/github-stars";
+import { NavItemGitHub } from "../github";
 
 const links = siteConfig.navItems;
 
@@ -87,10 +89,9 @@ export default function Navbar() {
               size="icon"
               className="hidden lg:flex"
               variant="secondary">
-              <Link href={GITHUB_URL} target="_blank">
-                <FaGithub className="size-4" />
-              </Link>
+              <GitHubStars stargazersCount={255} repo={GITHUB_URL} />
             </Button>
+            {/* <NavItemGitHub /> */}
 
             <Button
               onClick={() => setOpen(prev => !prev)}

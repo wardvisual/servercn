@@ -207,7 +207,7 @@ export function Terminal({
             <p
               ref={inputRef}
               className={cn(
-                "text-muted-secondary font-mono text-base",
+                "text-muted-secondary line-clamp-1 font-mono text-base",
                 "group-hover:text-accent-foreground duration-200",
                 copied && "text-accent-foreground"
               )}>
